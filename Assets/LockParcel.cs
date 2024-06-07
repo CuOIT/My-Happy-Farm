@@ -59,7 +59,7 @@ public class LockParcel : MonoBehaviour
                 changeMoney = currentNumber - nextNumber;
                 if (wallet.IsEnoughMoney(changeMoney))
                 {
-                    wallet.SpendMoney(changeMoney);
+                    wallet.SpendMoney(changeMoney,transform);
                     currentNumber= nextNumber;
                     SetMoney(currentNumber);
                     moneyUnlock.Value = currentNumber;

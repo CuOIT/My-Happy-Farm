@@ -1,0 +1,50 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Temp
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (Mono Auto Generated)
+mono_crash.*
+
+# User-specific files (Windows)
+*.userprefs
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# VS Code directories
+.vscode/
+
+# Visual Studio directories
+.vs/
+.vscode/
+
+# Visual Studio working directory
+.vscode/
+
+# Build directories
+bin/
+obj/
+
+# Auto-generated NuGet packages
+*.nupkg
+*.snupkg
+
+# Package configuration files
+packages.config
+
+# Temporary files
+*.log
+*.tmp
+
+# Other
+.DS_Store
+
+Library/

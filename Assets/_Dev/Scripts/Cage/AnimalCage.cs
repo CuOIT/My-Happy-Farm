@@ -34,6 +34,7 @@ namespace Cage
         private const string FORMAT = "yyyy/MM/dd HH:mm:ss";
         public void Awake()
         {
+            if(lastTimeFeed!=null)
             lastTime = DateTime.ParseExact(lastTimeFeed.Value, FORMAT,CultureInfo.InvariantCulture);
             animalUI = animalUIGO.GetComponent<IAnimalUI>();
             animals=GetComponentsInChildren<IAnimal>().ToList();
