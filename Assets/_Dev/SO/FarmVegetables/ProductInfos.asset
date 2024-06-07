@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d8011930263964b8c58725c70ec2b3, type: 3}
+  m_Name: ProductInfos
+  m_EditorClassIdentifier: 
+  productInfos:
+  - type: 1
+    sprite: {fileID: 21300000, guid: a8ee80f1bde45e242a3130d76b0e683b, type: 2}
+    description: Rice
+    price: 10
+  - type: 2
+    sprite: {fileID: 21300000, guid: 35be7a812fc22dd4f9b75f884056fcb9, type: 2}
+    description: Tomato
+    price: 15
+  - type: 3
+    sprite: {fileID: 21300000, guid: 12592d7cd05701f459c256fcf673e188, type: 2}
+    description: Watermelon
+    price: 20
+  - type: 4
+    sprite: {fileID: 21300000, guid: a772ba05cf2bad0479ad055954669411, type: 2}
+    description: Corn
+    price: 25
+  - type: 5
+    sprite: {fileID: 21300000, guid: c24b26ec0590e1241bcd5b00dcd11517, type: 2}
+    description: Pineapple
+    price: 30
+  - type: 6
+    sprite: {fileID: 21300000, guid: 57875adb5eb4a3349a7aca4ba47d009b, type: 2}
+    description: Eggplant
+    price: 35
+  - type: 7
+    sprite: {fileID: 21300000, guid: 57e112512b7572a4696b929e236b69c4, type: 3}
+    description: Use to feed chickens
+    price: 0
+  - type: 9
+    sprite: {fileID: 21300000, guid: 6baba1d2e84a1d14fafca37d04f375b1, type: 3}
+    description: Use to feed Cows
+    price: 0
+  - type: 8
+    sprite: {fileID: 21300000, guid: 0a88910bf20792b4da5d0d94c6cb0490, type: 3}
+    description: Use to feed Sheeps
+    price: 0
+  - type: 10
+    sprite: {fileID: 21300000, guid: aa29a1fe254544f4282f9945bdda15da, type: 3}
+    description: Delious food that provide proteins.
+    price: 10
+  - type: 11
+    sprite: {fileID: 21300000, guid: 2f073fde8ad722c41aaafa164ebd7229, type: 2}
+    description: Perfect for morning.
+    price: 25
+  - type: 12
+    sprite: {fileID: 21300000, guid: 718617bcbbf857940a845229692ca8ca, type: 2}
+    description: Need for materials.
+    price: 50
+  - type: 13
+    sprite: {fileID: 21300000, guid: 4a8cd5ad7bb088b4092bc3d99cf0a73f, type: 3}
+    description: Piece of cake.
+    price: 20
+  - type: 14
+    sprite: {fileID: 21300000, guid: 67015f3a016131045b75f390d862bbff, type: 3}
+    description: Sweeter than your ex.
+    price: 20
+  - type: 15
+    sprite: {fileID: 21300000, guid: 92bf4a7dab30b5747a3795872a58d01d, type: 3}
+    description: Famous in Vietnam.
+    price: 30
+  - type: 16
+    sprite: {fileID: 21300000, guid: 0b0ac580c8b63e2449af7fc5a607b7d1, type: 3}
+    description: A perfect juice for summer.
+    price: 200
+  - type: 17
+    sprite: {fileID: 21300000, guid: 01f0a362b31d850418c89a7e0fbe1ef9, type: 3}
+    description: Delicous for sure.
+    price: 300
+  - type: 18
+    sprite: {fileID: 21300000, guid: 6c021038f2a0b7441bb05fd49bb0be3a, type: 3}
+    description: Happy eating.
+    price: 400
+  - type: 19
+    sprite: {fileID: 21300000, guid: c457d5418510c7546977f86719fa2fa7, type: 3}
+    description: A soup a day, keep doctor away.
+    price: 500

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a30f0502b5a314a92fa88cb876bead, type: 3}
+  m_Name: CropTypeList
+  m_EditorClassIdentifier: 
+  plantList:
+  - plantType: 1
+    smallPlant: {fileID: 1746893517178642, guid: 43399a90a5d95ec41815aeede5cd1d6e, type: 3}
+    mediumPlant: {fileID: 1879731767481718, guid: 99a36c8d03c52254881c4f071db223b9, type: 3}
+    collectableItem: {fileID: 1328308120427667, guid: 889f07029d38e7941b8e7837c80b1f82, type: 3}
+    price: 10
+  - plantType: 2
+    smallPlant: {fileID: 1280536876647477, guid: 78783376730f9924a87c3ad5228d4407, type: 3}
+    mediumPlant: {fileID: 1502309608775407, guid: d00d426396e92624e8d93f8ad62c1a92, type: 3}
+    collectableItem: {fileID: 1590965135423050, guid: 3900a1b498899084b8f620315ec8b0c4, type: 3}
+    price: 22
+  - plantType: 3
+    smallPlant: {fileID: 1185319271936269, guid: 8b01349a7b1b2d047b19eef2123da1ce, type: 3}
+    mediumPlant: {fileID: 1206522661945018, guid: 8c5751a7419adac4591170b48f6b7690, type: 3}
+    collectableItem: {fileID: 1619586670956671, guid: d3b07839bd327f24ca7d0bb6e58f0c52, type: 3}
+    price: 33
+  - plantType: 0
+    smallPlant: {fileID: 0}
+    mediumPlant: {fileID: 0}
+    collectableItem: {fileID: 0}
+    price: 0
+  - plantType: 0
+    smallPlant: {fileID: 0}
+    mediumPlant: {fileID: 0}
+    collectableItem: {fileID: 0}
+    price: 0
