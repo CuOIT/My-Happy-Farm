@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eac036a316af204385a13594b5d7cde, type: 3}
-  m_Name: LevelUp
+  m_Script: {fileID: 188390376, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: ImportSettingsConfig
   m_EditorClassIdentifier: 
-  testValueOnly: 11
+  automateBeforeBuild: 1

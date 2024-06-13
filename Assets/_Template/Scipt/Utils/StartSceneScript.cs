@@ -1,42 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartSceneScript : MonoBehaviour
+public class StartSceneController : MonoBehaviour
 {
 
-    [SerializeField] private Slider slider;
-    [SerializeField] private float fakeTimeLoad;
-                     private float sliderValue=0;
-    void Start()
+    public GameObject loadingScreen;
+    public Slider progressBar;
+
+    public void LoadScene(string sceneName)
     {
-        StartCoroutine(LoadSceneAsync());
+        StartCoroutine(LoadSceneAsync(sceneName));
     }
 
-
-
-    IEnumerator LoadSceneAsync()
+    private IEnumerator LoadSceneAsync(string sceneName)
     {
-        AsyncOperation op = SceneManager.LoadSceneAsync(1);
-        op.allowSceneActivation = false;
+        loadingScreen.SetActive(true);
 
-        while (!op.isDone)
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        operation.allowSceneActivation = false;
+
+        while (!operation.isDone)
         {
-            if (op.progress >= 0.9f && sliderValue >= 1 && !op.allowSceneActivation)
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            progressBar.value = progress;
+            if (operation.progress >= 0.9f)
             {
-                yield return new WaitForSeconds(0.5f);
-                op.allowSceneActivation = true;
-                yield break;
+
+
+                operation.allowSceneActivation = true;
             }
-            else
-            {
-                sliderValue += Time.deltaTime / fakeTimeLoad;
-                if (sliderValue > 1) sliderValue = 1;
-                slider.value = sliderValue;
-            }
+
             yield return null;
         }
     }

@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eac036a316af204385a13594b5d7cde, type: 3}
-  m_Name: LevelUp
+  m_Script: {fileID: 11500000, guid: d5c1fbbc50cd6f24a8d50421164c082e, type: 3}
+  m_Name: Sheep
   m_EditorClassIdentifier: 
-  testValueOnly: 11
+  Name: Sheep1
+  defaultValue: 2000/01/01 00:00:00
