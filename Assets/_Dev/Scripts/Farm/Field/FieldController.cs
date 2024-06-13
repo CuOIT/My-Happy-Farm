@@ -13,9 +13,10 @@ public class FieldController : MonoBehaviour,IField
     [SerializeField] GameObject             _info;
 
     [SerializeField] SimpleEvent            _leaveField;
-    [SerializeField] GameObject             IFieldUIGO;
-    private IFieldUI fieldUI;
+  /*  [SerializeField] GameObject             IFieldUIGO;
+    private IFieldUI fieldUI;*/
 
+    [SerializeField] FieldUI fieldUI;
 
 
     [System.Serializable]
@@ -28,7 +29,7 @@ public class FieldController : MonoBehaviour,IField
     public void Awake()
     {
         col=GetComponent<Collider>();
-        fieldUI = IFieldUIGO.GetComponent<IFieldUI>();
+        //fieldUI = IFieldUIGO.GetComponent<IFieldUI>();
     }
     public void Start()
     {

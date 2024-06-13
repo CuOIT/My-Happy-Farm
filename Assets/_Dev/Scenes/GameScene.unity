@@ -5048,7 +5048,7 @@ MonoBehaviour:
   plantType: {fileID: 11400000, guid: 0c2e51a32c40068488764e957dc92eff, type: 2}
   _info: {fileID: 0}
   _leaveField: {fileID: 0}
-  IFieldUIGO: {fileID: 1107637732}
+  fieldUI: {fileID: 1107637737}
   events: []
 --- !u!4 &238983608
 Transform:
@@ -16720,7 +16720,7 @@ MonoBehaviour:
   plantType: {fileID: 11400000, guid: 00f217ed07474ba4098fe49421fbf94e, type: 2}
   _info: {fileID: 0}
   _leaveField: {fileID: 0}
-  IFieldUIGO: {fileID: 1107637732}
+  fieldUI: {fileID: 1107637737}
   events: []
 --- !u!4 &740098175
 Transform:
@@ -33722,7 +33722,7 @@ MonoBehaviour:
   plantType: {fileID: 11400000, guid: 00912d89b6a1fc641b3273cd633a11d4, type: 2}
   _info: {fileID: 0}
   _leaveField: {fileID: 0}
-  IFieldUIGO: {fileID: 1107637732}
+  fieldUI: {fileID: 1107637737}
   events: []
 --- !u!1001 &1344210118
 PrefabInstance:

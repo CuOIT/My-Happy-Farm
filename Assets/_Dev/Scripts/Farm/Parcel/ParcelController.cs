@@ -20,4 +20,12 @@ public class ParcelController : MonoBehaviour
             parcel.InitByLevel(level);
         }
     }
+
+    public void OnLevelUp(int level)
+    {
+        foreach (var parcel in parcels)
+        {
+            parcel.InitByLevel(level);
+        }
+    }
 }
