@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class Backpack : Container
 {
-    [SerializeField] Button sellBtn;
-    [SerializeField] Button sendStorageBtn;
+/*    [SerializeField] Button sellBtn;*/
+    //[SerializeField] Button sendStorageBtn;
 
-    [SerializeField] SliderPopUp sliderSendToStorage;
-    [SerializeField] SliderPopUp sliderToSell;
+    //[SerializeField] SliderPopUp sliderSendToStorage;
+    /*[SerializeField] SliderPopUp sliderToSell;
 
-    [SerializeField] ProductNumEvent sellProductEvent;
-    [SerializeField] IntEvent earnMoneyEvent;
+    [SerializeField] ProductNumEvent sellProductEvent;*/
 
-    public async void SellProduct()
+    /*public async void SellProduct()
     {
         ProductInfo info = mapProductInfo[currentItem];
         int num = await sliderToSell.ShowSliderPopupAsync(info, productData.Value[info.type]);
@@ -24,18 +23,18 @@ public class Backpack : Container
         {
             Sell(productNum);
         }
-    }
-    public void Sell(ProductNum productNum)
+    }*/
+   /* public void Sell(ProductNum productNum)
     {
         ProductInfo info = productInfos.GetProductInfoOfType(productNum.type);
         Dictionary<FarmProductType, int> newValue = productData.Value;
         newValue[productNum.type] -= productNum.num;
         productData.Value = newValue;
         sellProductEvent.RaiseEvent(productNum);
-        earnMoneyEvent.RaiseEvent(info.price * productNum.num);
+        GameManager.Instance.moneyController.CollectMoney(info.price * productNum.num);
         GetAllProduct();
-    }
-    public override void SetCurrentItem(ItemBoxUI item)
+    }*/
+    /*public override void SetCurrentItem(ItemBoxUI item)
     {
         base.SetCurrentItem(item);
         ProductInfo info;
@@ -52,19 +51,19 @@ public class Backpack : Container
             t_price.SetText(info.price.ToString()+" $");
             t_des.SetText(info.description.ToString());
             sellBtn.gameObject.SetActive(true);
-            sendStorageBtn?.gameObject.SetActive(true);
+            sendToTargetBtn?.gameObject.SetActive(true);
         }
         else
         {
             t_name.SetText("");
             t_price.SetText("");
             t_des.SetText("");
-            sendStorageBtn?.gameObject.SetActive(false);
+            sendToTargetBtn?.gameObject.SetActive(false);
             sellBtn.gameObject.SetActive(false);
         }
-    }
+    }*/
 
-    public async void SendToStorage()
+/*    public async void SendToStorage()
     {
         ProductInfo info = mapProductInfo[currentItem];
         int num = await sliderSendToStorage.ShowSliderPopupAsync(info, productData.Value[info.type]);
@@ -74,5 +73,5 @@ public class Backpack : Container
         {
             ExchangeProduct(productNum);
         }
-    }
+    }*/
 }

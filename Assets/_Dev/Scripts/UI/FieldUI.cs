@@ -6,18 +6,16 @@ using UnityEngine.UI;
 
 public class FieldUI : MonoBehaviour,IFieldUI
 {
-    [SerializeField] GameObject _growAction;
+    [SerializeField] GameObject firstAction;
+
     [SerializeField] GameObject _seedAction;
-    [SerializeField] GameObject _waterAction;
-    [SerializeField] GameObject _collectAction;
 
     private GameObject currentAction;
 
-    [SerializeField] SimpleEvent _confirmGrowEvent;
+    [SerializeField] SimpleEvent _confirmSeedEvent;
     [SerializeField] SimpleEvent _confirmWaterEvent;
     [SerializeField] SimpleEvent _confirmCollectEvent;
     [SerializeField] SimpleEvent _confirmLeaveFieldEvent;
-
     [Serializable]
     struct PlantButton
     {
@@ -27,7 +25,7 @@ public class FieldUI : MonoBehaviour,IFieldUI
     [SerializeField] List<PlantButton> plantButtons;
     private Dictionary<FarmProductType,Button> dicsBtn;
     private FarmProductType _type;
-    private IField _field;
+    private FieldController _currentField;
     public void Awake()
     {
         dicsBtn = new();
@@ -40,10 +38,13 @@ public class FieldUI : MonoBehaviour,IFieldUI
         }
     }
 
-    public void InitType(FarmProductType type,IField field)
+    public void InitField(FieldController field)
+    {
+        _currentField = field;
+    }
+    public void InitType(FarmProductType type)
     {
         _type = type;
-        _field= field;
         bool actived = _type == FarmProductType.NONE;
         foreach(var plantbutton in plantButtons)
         {
@@ -55,52 +56,9 @@ public class FieldUI : MonoBehaviour,IFieldUI
             }
         }
     }
-
     public void SetType(FarmProductType type)
     {
-        _field?.SetPlant(type);
-    }
-    public void ShowGrowAction()
-    {
-        SetCurrentAction(_growAction);
-    }
-    public void ShowPlantSeedAction()
-    {
-        SetCurrentAction(_seedAction);
-    }
-    public void ShowWaterAction()
-    {
-        SetCurrentAction(_waterAction);
-    }
-    public void ShowCollectAction()
-    {
-        SetCurrentAction(_collectAction);
-    }
-    public void UnShow()
-    {
-        SetCurrentAction(null);
-        _confirmLeaveFieldEvent.RaiseEvent();
-    }
-
-    public void OnClickGrowAction()
-    {
-        SetCurrentAction(_seedAction);
-    }
-    public void OnClickOfSeedAction(FarmProductType type)
-    {
-        SetCurrentAction(null);
-        _field.SetPlant(type);
-        _confirmGrowEvent.RaiseEvent();
-    }
-    public void OnClickOfWaterAction()
-    {
-        _waterAction.SetActive(false);
-        _confirmWaterEvent.RaiseEvent();
-    }
-    public void OnClickOfCollectAction()
-    {
-        _collectAction.SetActive(false);
-        _confirmCollectEvent.RaiseEvent();
+        _currentField?.SetPlantType(type);
     }
     public void SetCurrentAction(GameObject action)
     {
@@ -113,5 +71,42 @@ public class FieldUI : MonoBehaviour,IFieldUI
     }
 
 
+    public void ShowAction()
+    {
+        SetCurrentAction(firstAction);
+    }
+    public void ShowPlantSeedAction()
+    {
+        SetCurrentAction(_seedAction);
+    }
+    public void UnShow()
+    {
+        SetCurrentAction(null);
+        _confirmLeaveFieldEvent.RaiseEvent();
+    }
+
+
+
+    public void OnClickGrowAction()
+    {
+        InitType( _currentField.GetPlantType());
+        SetCurrentAction(_seedAction);
+    }
+    public void OnClickOfSeedAction(FarmProductType type)
+    {
+        SetCurrentAction(null);
+        _currentField.SetPlantType(type);
+        _confirmSeedEvent.RaiseEvent();
+    }
+    public void OnClickOfWaterAction()
+    {
+        //_waterAction.SetActive(false);
+        _confirmWaterEvent.RaiseEvent();
+    }
+    public void OnClickOfCollectAction()
+    {
+       // _collectAction.SetActive(false);
+        _confirmCollectEvent.RaiseEvent();
+    }
 
 }

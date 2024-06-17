@@ -65,7 +65,10 @@
     <Compile Include="Assets\Animal.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\ProductImage\ProductInfos.cs" />
     <Compile Include="Assets\_Dev\Scripts\Farm\Field\FieldController.cs" />
+    <Compile Include="Assets\SeedFX.cs" />
     <Compile Include="Assets\_Dev\Scripts\Human\ICollector.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DailyMission\MissionUI.cs" />
+    <Compile Include="Assets\GridSupport.cs" />
     <Compile Include="Assets\MobileDepthWater\Scripts\CameraDepthSlider.cs" />
     <Compile Include="Assets\_Template\Scipt\Input\Joystick.cs" />
     <Compile Include="Assets\Wallet.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\ProductImage\ProductImages.cs" />
     <Compile Include="Assets\MobileDepthWater\Scripts\TouchRotator.cs" />
     <Compile Include="Assets\IWallet.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DefinedSO\GrowTime\GrowTime.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\BaseEventListener.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\GameObjectEventListener.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Recipe\Recipe.cs" />
@@ -88,6 +92,8 @@
     <Compile Include="Assets\Parcel.cs" />
     <Compile Include="Assets\_Dev\Scripts\UI\ItemUI.cs" />
     <Compile Include="Assets\PlantSize.cs" />
+    <Compile Include="Assets\CellUI.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DailyMission\ProductNumMission.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\GameObjectEvent.cs" />
     <Compile Include="Assets\_Dev\Scripts\Farm\Field\FieldCell.cs" />
     <Compile Include="Assets\Test.cs" />
@@ -101,6 +107,7 @@
     <Compile Include="Assets\_Template\Scipt\Singleton\DataSystem.cs" />
     <Compile Include="Assets\ProductDrop.cs" />
     <Compile Include="Assets\_Template\Scipt\UI\IncreaseNumberText.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DefinedSO\Data\ListStringData.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Data\FarmProductTypeData.cs" />
     <Compile Include="Assets\ProductUIDrop.cs" />
     <Compile Include="Assets\WaterCan.cs" />
@@ -110,6 +117,7 @@
     <Compile Include="Assets\Barn.cs" />
     <Compile Include="Assets\_Template\Scipt\Data\FloatData.cs" />
     <Compile Include="Assets\BarnTrigger.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DefinedSO\Data\MissionData.cs" />
     <Compile Include="Assets\FieldSquare.cs" />
     <Compile Include="Assets\Container.cs" />
     <Compile Include="Assets\ItemBoxUI.cs" />
@@ -143,6 +151,8 @@
     <Compile Include="Assets\MobileDepthWater\Scripts\CameraRotator.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\_CustomEvent\PlantTypeAndNumEventListener.cs" />
     <Compile Include="Assets\_Dev\Scripts\Cage\HungryState.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DailyMission\Mission.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DefinedSO\CellStatesData.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\BaseSOEvent.cs" />
     <Compile Include="Assets\ButtonSound.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\Vector3Event.cs" />
@@ -150,6 +160,7 @@
     <Compile Include="Assets\_Template\SO\RealtimeData\RealtimeData.cs" />
     <Compile Include="Assets\Notice.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\_CustomEvent\ProductNumEventListener.cs" />
+    <Compile Include="Assets\_Dev\Scripts\DailyMission\MissionController.cs" />
     <Compile Include="Assets\_Template\Scipt\Data\IntData.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Data\ParcelsData.cs" />
     <Compile Include="Assets\_Dev\Scripts\Farm\Plant\PlantAnim.cs" />

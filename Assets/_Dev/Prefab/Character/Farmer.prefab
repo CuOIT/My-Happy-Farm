@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 2782436107196567348}
   - component: {fileID: 7964233475037816972}
   - component: {fileID: 1918739021675339020}
+  - component: {fileID: 2491176063824878825}
   - component: {fileID: 5738756425413129528}
   m_Layer: 7
   m_Name: Farmer
@@ -885,6 +886,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2491176063824878825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719541164166968812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbfcbcc1cd02d6841b0acacce7bee2aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  part: {fileID: 8469143043398858457}
 --- !u!114 &5738756425413129528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1954,6 +1968,11 @@ GameObject:
 --- !u!1 &7562581879911302390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6994058089384154896, guid: 6a71738add6483c4e8a1479556240d54, type: 3}
+  m_PrefabInstance: {fileID: 719541164593370086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8469143043398858457 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8967830525814875455, guid: 6a71738add6483c4e8a1479556240d54, type: 3}
   m_PrefabInstance: {fileID: 719541164593370086}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8937911220134086607 stripped

@@ -5,16 +5,18 @@ using UnityEngine;
 
 public interface IFieldUI 
 {
-    void InitType(FarmProductType type,IField field);
+    void InitType(FarmProductType type);
 
     void SetType(FarmProductType type);
-    void ShowGrowAction();
+    /*void ShowGrowAction();*/
 
-    void ShowPlantSeedAction();
 
-    void ShowWaterAction();
+    void ShowAction();
+    //void ShowPlantSeedAction();
 
-    void ShowCollectAction();
+    /*void ShowWaterAction();
+
+    void ShowCollectAction();*/
 
     void UnShow();
     

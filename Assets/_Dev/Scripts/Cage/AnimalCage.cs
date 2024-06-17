@@ -27,16 +27,21 @@ namespace Cage
 
         [SerializeField] TextMeshProUGUI timeTxt;
 
-        [SerializeField] GameObject animalUIGO;
-        private IAnimalUI animalUI;
+    /*    [SerializeField] GameObject animalUIGO;
+        private IAnimalUI animalUI;*/
+
+        [SerializeField] AnimalUI animalUI;
         private bool isHungry;
 
         private const string FORMAT = "yyyy/MM/dd HH:mm:ss";
+
+        [SerializeField] ProductNumEvent feedEvent;
+        [SerializeField] ProductNumEvent collectEvent;
         public void Awake()
         {
             if(lastTimeFeed!=null)
             lastTime = DateTime.ParseExact(lastTimeFeed.Value, FORMAT,CultureInfo.InvariantCulture);
-            animalUI = animalUIGO.GetComponent<IAnimalUI>();
+            //animalUI = animalUIGO.GetComponent<IAnimalUI>();
             animals=GetComponentsInChildren<IAnimal>().ToList();
         }
 
@@ -55,6 +60,7 @@ namespace Cage
             ShowTime();
             AnimalFeed();
             farmer.Consume(foodRequire);
+            feedEvent.RaiseEvent(foodRequire);  
         }
 
         public void Update()
@@ -98,10 +104,13 @@ namespace Cage
         [Button]
         public void Harvest()
         {
-            GameObject product = GameManager.Instance.pooler.SpawnFromPool(this.productNum.type.ToString(), transform.position, Quaternion.identity);
-            GameObject product2 = GameManager.Instance.pooler.SpawnFromPool(this.productNum.type.ToString(), transform.position, Quaternion.identity);
-            farmer.Harvest(product, productNum);
-            farmer.Harvest(product2, productNum);
+            int num = productNum.num;
+            for(int i = 0; i < num; i++)
+            {
+                GameObject product = GameManager.Instance.pooler.SpawnFromPool(productNum.type.ToString(), transform.position, Quaternion.identity);
+                farmer.Harvest(product, new ProductNum(productNum.type,1));
+            }
+            collectEvent.RaiseEvent(productNum);
         }
 
         public void AnimalShowHungry()

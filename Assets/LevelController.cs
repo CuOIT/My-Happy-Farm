@@ -29,7 +29,7 @@ public class LevelController : MonoBehaviour
         SetLevel(level.Value);
     }
 
-    public void GetMaxEXP()
+    void GetMaxEXP()
     {
         maxEXP = expInfo.GetlevelEXP(level.Value);
     }
@@ -37,14 +37,14 @@ public class LevelController : MonoBehaviour
     {
         levelNum.SetText(level.ToString());
     }
-    public void SetExp(int exp)
+    void SetExp(int exp)
     {
         Exp.Value=exp;
         float process = (float)exp / maxEXP;
         processExp.rectTransform.DOSizeDelta(new Vector2(minWidth+process*length, 0), 0.2f);
     }
 
-    public void OnCollectEXP(int num)
+    public void CollectEXP(int num)
     {
         int nextEXP = Exp.Value + num;
         if (nextEXP >= maxEXP)
@@ -58,7 +58,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void LevelUp()
+    void LevelUp()
     {
         int nextLevel = level.Value + 1;
         level.Value = nextLevel;

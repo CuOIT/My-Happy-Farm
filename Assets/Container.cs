@@ -13,7 +13,14 @@ public class Container : BaseContainer
     [SerializeField] protected TextMeshProUGUI t_price;
     [SerializeField] protected TextMeshProUGUI t_des;
 
+    [SerializeField] SliderPopUp sliderSell;
+    [SerializeField] SliderPopUp sliderSendToTarget;
+    [SerializeField] ProductNumEvent sellProductEvent;
+
     [SerializeField] Container target;
+
+    [SerializeField]protected Button sendToTargetBtn;
+    [SerializeField]protected Button sellBtn;
     public override void GetAllProduct()
     {
         mapProductInfo = new();
@@ -78,6 +85,39 @@ public class Container : BaseContainer
         if (target == null) return;
         RemoveProduct(productNum);
         target.AddProduct(productNum);
+        GetAllProduct();
+    }
+
+    public async void SendToTarget()
+    {
+        ProductInfo info = mapProductInfo[currentItem];
+        int num = await sliderSendToTarget.ShowSliderPopupAsync(info, productData.Value[info.type]);
+        ProductNum productNum = new ProductNum(info.type, num);
+        if (num == 0) return;
+        else
+        {
+            ExchangeProduct(productNum);
+        }
+    }
+    public async void SellProduct()
+    {
+        ProductInfo info = mapProductInfo[currentItem];
+        int num = await sliderSell.ShowSliderPopupAsync(info, productData.Value[info.type]);
+        ProductNum productNum = new ProductNum(info.type, num);
+        if (num == 0) return;
+        else
+        {
+            Sell(productNum);
+        }
+    }
+    public void Sell(ProductNum productNum)
+    {
+        ProductInfo info = productInfos.GetProductInfoOfType(productNum.type);
+        Dictionary<FarmProductType, int> newValue = productData.Value;
+        newValue[productNum.type] -= productNum.num;
+        productData.Value = newValue;
+        sellProductEvent.RaiseEvent(productNum);
+        GameManager.Instance.moneyController.CollectMoney(info.price * productNum.num);
         GetAllProduct();
     }
 }

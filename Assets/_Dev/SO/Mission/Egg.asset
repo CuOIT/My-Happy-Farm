@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c8d63752eef4f43924895ee47281bc, type: 3}
+  m_Name: Egg
+  m_EditorClassIdentifier: 
+  description: Collect 1 eggs
+  currentProgress: 1
+  targetProgress: 1
+  reward: 1000
+  completeEvent: {fileID: 11400000, guid: 937d13c5322ba3a4baa0f8e2d8bf9a72, type: 2}
+  collected: 0
+  productEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
+  target:
+    type: 10
+    num: 1

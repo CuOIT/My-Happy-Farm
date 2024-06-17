@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class PlantSize : MonoBehaviour
 {
+    [SerializeField] GameObject seed;
     [SerializeField] GameObject smallPlant;
     [SerializeField] GameObject medPlant;
 
+    private GameObject _currentPlant;
+
+    public void ShowSeed()
+    {
+        UnShow();
+        SetCurrentPlant(seed);
+    }
+
     public void ShowSmallPlant()
     {
-        smallPlant?.SetActive(true);
-        medPlant?.SetActive(false);
+        UnShow();
+        SetCurrentPlant(smallPlant);
     }
 
     public void ShowMedPlant()
     {
-        smallPlant?.SetActive(false);
-        medPlant?.SetActive(true);
+        UnShow();
+        SetCurrentPlant(medPlant);
+    }
+
+    void SetCurrentPlant(GameObject currentPlant)
+    {
+        _currentPlant = currentPlant;
+        _currentPlant.SetActive(true);
     }
     public void UnShow()
     {
-        smallPlant?.SetActive(false);
-        medPlant?.SetActive(false);
+        _currentPlant?.SetActive(false);
     }
 }

@@ -14,12 +14,12 @@ public class MoneyController : MonoBehaviour
     [SerializeField] Transform des;
     private int _money;
 
-    public void SetTextMoney(int num)
+    void SetTextMoney(int num)
     {
         _money = num;
         moneyNum.SetText(num.ToString());
     }
-    public IEnumerator SetMoney(int money,float delayTime=0)
+    IEnumerator SetMoney(int money,float delayTime=0)
     {
         int start = _money;
         moneyData.Value=money;
@@ -36,15 +36,12 @@ public class MoneyController : MonoBehaviour
             SetTextMoney(money);
         }
     }
-    public void OnMoneySpent()
+
+     void OnEnable()
     {
         SetTextMoney(moneyData.Value);
     }
-    public void OnEnable()
-    {
-        SetTextMoney(moneyData.Value);
-    }
-    public void OnCollectMoney(int num)
+    public void CollectMoney(int num)
     {
         PlayAnim();
         int newMoney = num+moneyData.Value; 
@@ -52,7 +49,7 @@ public class MoneyController : MonoBehaviour
     }
     [SerializeField] float length;
     [Button]
-    public void PlayAnim()
+    void PlayAnim()
     {
         for(int i = 0; i < 6; i++)
         {
@@ -94,12 +91,5 @@ public class MoneyController : MonoBehaviour
         }
         coinRectTransform.position = des.position;
         Destroy(coinRectTransform.gameObject);
-    }
-
-    void AddCoinsToPlayer(int amount)
-    {
-        // Implement logic to add coins to player's total
-        // Example: Player.Instance.AddCoins(amount);
-        Debug.Log("Added " + amount + " coins to player.");
     }
 }

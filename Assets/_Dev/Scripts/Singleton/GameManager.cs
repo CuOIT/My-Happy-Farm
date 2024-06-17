@@ -6,8 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-    public CropTypeList plantListContainer;
     public ObjectPooler pooler;
+    
+    public LevelController levelController;
+    public MoneyController moneyController;
 
     public static GameManager Instance
     {

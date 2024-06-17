@@ -30,7 +30,12 @@ public class LocalData<T> : ScriptableObject, IData<T>
     {
             LoadData();
             Debug.Log(Name+ "Load");
-           // LoadData();
+            OnLoadSuccessfully();
+    }
+
+    protected virtual void OnLoadSuccessfully()
+    {
+
     }
 
     [ContextMenu("ShowValue")]

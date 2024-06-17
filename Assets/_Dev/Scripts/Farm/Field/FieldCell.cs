@@ -1,73 +1,121 @@
 using Assets._Dev.SO._CustomEvent;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class FieldCell : MonoBehaviour
 {
+
+    private const int NONE = 0;
+    private const int GROW = 1;
+    private const int WATER = 2;
+    private const int COLLECT = 3; 
     private int id;
-    private FarmProductType type;
-    [SerializeField] int                   _state;
+    private FarmProductType         type;
+    private int                     _plantDuration;
+    private FieldSquare             fieldSqr;
+    [SerializeField] int            _state;
+    [SerializeField] GameObject     _waterField;
+    [SerializeField] CellUI         _cellUI;
+    private PlantSize               _plantSize;
 
-    [SerializeField] Transform      _plantRoot;
-    private FieldController         _fieldController;
-    PlantSize _plantSize;
-    [SerializeField] List<PlantType> plantTypes;
+    [SerializeField]List<PlantInfo> plantInfos;
 
+    public DateTime start;
     [Serializable]
-    private struct PlantType
+    private struct PlantInfo
     {
         public FarmProductType type;
         public PlantSize plantSize;
     }
-    private Dictionary<FarmProductType, PlantSize> plantSize;
+    [SerializeField] GrowTime growTime;
+    [SerializeField] ParticleSystem part;
     public void InitPlantType(FarmProductType type)
     {
         this.type = type;
-        foreach(var plantType in plantTypes)
+        foreach(var plantInfo in plantInfos)
         {
-            if (plantType.type == type)
+            if (plantInfo.type == type)
             {
-                plantType.plantSize.gameObject.SetActive(true);
-                _plantSize = plantType.plantSize;
+                plantInfo.plantSize.gameObject.SetActive(true);
+                _plantSize = plantInfo.plantSize;
+                _plantDuration=growTime.GetPlantDurationInSec(type);
             }
             else
             {
-                plantType.plantSize.gameObject.SetActive(false);
+                plantInfo.plantSize.gameObject.SetActive(false);
             }
         }
     }
-    private FieldSquare fieldSqr;
+
+    const string FORMAT = "yyyy/MM/dd HH:mm:ss";
+    public void InitWaterTime(string time)
+    {
+        try
+        {
+            start = DateTime.ParseExact(time, FORMAT, CultureInfo.InvariantCulture);
+        }
+        catch
+        {
+            start = DateTime.MinValue;
+        }
+    }
     public void SetId(FieldSquare sqr,int id)
     {
         fieldSqr = sqr;
         this.id=id;
     }
-    public void SetState(int num)
+
+    public void SetState(int state)
     {
-        _state = num;
-        fieldSqr.UpdateState(id, num);
-    }
-    public void InitState(int num)
-    {
-        _state = num;
-        if(type==FarmProductType.NONE)
+        if (type == FarmProductType.NONE)
         {
-            _state = 0;
+            _state = NONE;
         }
         if (!_plantSize) return;
-        if (_state == 0) _plantSize.UnShow();
-        else if (_state == 1) _plantSize.ShowSmallPlant();
-        else if (_state == 2) _plantSize.ShowMedPlant();
+        _state=state;
+        switch (_state)
+        {
+            case NONE:
+                _plantSize.UnShow();
+                _cellUI.UnShow();
+                UnWater();
+                break;
+            case GROW:
+                _plantSize.transform.localRotation = RandomRotate();
+                _plantSize.ShowSeed();
+                _cellUI.OnWater();
+                UnWater();
+                break;
+            case WATER:
+                _plantSize.ShowSmallPlant();
+                _cellUI.OnTime();
+                Water();
+                break;
+            case COLLECT:
+                _cellUI.OnCollect();
+                _plantSize.ShowMedPlant();
+                UnWater();
+                break;
+            
+        }
+        fieldSqr?.UpdateState(id, _state);
     }
-
-    public void Awake()
+    public void SetWaterTime(DateTime dateTime)
     {
-        _fieldController = GetComponentInParent<FieldController>(); 
+        start = dateTime;
+        fieldSqr.UpdateWaterTime(id,dateTime.ToString(FORMAT));
     }
-
+    
+    public void InitState(int num)
+    {
+        SetState(num);
+    }
     private Quaternion RandomRotate()
     {
         float X = Random.Range(0,10);
@@ -75,51 +123,66 @@ public class FieldCell : MonoBehaviour
         float Z = Random.Range(0,10);
         return Quaternion.Euler(X, Y, Z);
     }
-    // Update is called once per frame
-
+    
 
     public int GetState()
     {
         return (int)_state;
     }
 
-
-    public void IncreaseFieldNumState()
-    {
-        _fieldController.IncreaseState();
-    }
     [ContextMenu("GROW")]
     public void GrowPlant() {
-        if (_state != 0) return;
-        SetState(1);
-        _plantSize.ShowSmallPlant();        
-        _plantSize.transform.localRotation = RandomRotate();
-        IncreaseFieldNumState();
-        
+        if (_state != NONE) return;
+        part.Play();
+        SetWaterTime(DateTime.Now);
+        SetState(GROW);
     }
 
     [ContextMenu("WATER")]
     public void WaterPlant()
     {
-        if (_state != 1) return;
-        SetState(2);
-        _plantSize.ShowMedPlant();
-        IncreaseFieldNumState();
+        if (_state != GROW) return;
+        SetState(WATER);
     }
 
+    public void GrowUp()
+    {
+        SetState(COLLECT);
+    }
     [ContextMenu("COLLECT")]
     public void CollectPlant(IHarvest farmer)
     {
-        if(_state != 2) return;
+        if(_state != COLLECT) return;
+        SetState(NONE);
         int num = 1;
-        _plantSize.UnShow();
-        SetState(0);
         GameObject product= GameManager.Instance.pooler.SpawnFromPool(type.ToString(), transform.position, Quaternion.identity);
         ProductNum productNum  = new ProductNum(type, num);
         farmer.Harvest(product,productNum);
-        IncreaseFieldNumState();
     }
 
+    public void Water()
+    {
+        _waterField.SetActive(true);
+    }
+    public void UnWater()
+    {
+        _waterField.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (_state == WATER)
+        {
+            TimeSpan span = DateTime.Now - start;
+            long totalSeconds = (long)span.TotalSeconds;
+            long remainTime =  _plantDuration - totalSeconds;
+            _cellUI.SetTime(remainTime);
+            if (remainTime < 0)
+            {
+                GrowUp();
+            }
+        }
+    }
     public void OnTriggerEnter(Collider other)
     {
         IHarvest farmer = other.GetComponentInParent<IHarvest>();

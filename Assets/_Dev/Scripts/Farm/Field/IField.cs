@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IField 
 {
-    void SetPlant(FarmProductType plantType);
+    FarmProductType GetPlantType();
+    void SetPlantType(FarmProductType plantType);
 }

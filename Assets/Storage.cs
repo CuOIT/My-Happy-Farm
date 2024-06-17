@@ -8,29 +8,20 @@ using UnityEngine.UI;
 public class Storage : Container
 {
     [SerializeField] SimpleEvent storeEvent;
-    [SerializeField] SliderPopUp sliderPopUpBack;
-    [SerializeField] SliderPopUp sliderSell;
-    [SerializeField] Button SendToBackpackBtn;
-    [SerializeField] Button SellBtn;
-    [SerializeField] ProductNumEvent sellProductEvent;
-    [SerializeField] IntEvent earnMoneyEvent;
+   // [SerializeField] SliderPopUp sliderPopUpBack;
+    //[SerializeField] SliderPopUp sliderSell;
+   // [SerializeField] Button SendToBackpackBtn;
+   // [SerializeField] Button SellBtn;
+   // [SerializeField] ProductNumEvent sellProductEvent;
     public override void SetCurrentItem(ItemBoxUI item)
     {
         base.SetCurrentItem(item);
-        if (item == null) return;
-        if (!mapProductInfo.ContainsKey(item))
+        if(item!=null)
         {
-            SendToBackpackBtn.gameObject.SetActive(false);
-            SellBtn.gameObject.SetActive(false);
+            storeEvent.RaiseEvent();
         }
-        else
-        {
-            SendToBackpackBtn.gameObject.SetActive(true);
-            SellBtn.gameObject.SetActive(true);
-        }
-        storeEvent.RaiseEvent();
     }
-    public async void SendToBackpack()
+  /*  public async void SendToBackpack()
     {
         ProductInfo info = mapProductInfo[currentItem];
         int num = await sliderPopUpBack.ShowSliderPopupAsync(info, productData.Value[info.type]);
@@ -40,9 +31,9 @@ public class Storage : Container
         {
             ExchangeProduct(productNum);
         }
-    }
+    }*/
 
-    public async void SellProduct()
+    /*public async void SellProduct()
     {
         ProductInfo info = mapProductInfo[currentItem];
         int num = await sliderSell.ShowSliderPopupAsync(info, productData.Value[info.type]);
@@ -60,7 +51,7 @@ public class Storage : Container
         newValue[productNum.type] -= productNum.num;
         productData.Value = newValue;
         sellProductEvent.RaiseEvent(productNum);
-        earnMoneyEvent.RaiseEvent(info.price * productNum.num);
+        GameManager.Instance.moneyController.CollectMoney(info.price * productNum.num);
         GetAllProduct();
-    }
+    }*/
 }
