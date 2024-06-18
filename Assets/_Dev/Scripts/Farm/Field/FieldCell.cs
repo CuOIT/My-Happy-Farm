@@ -11,10 +11,10 @@ using Random = UnityEngine.Random;
 public class FieldCell : MonoBehaviour
 {
 
-    private const int NONE = 0;
-    private const int GROW = 1;
-    private const int WATER = 2;
-    private const int COLLECT = 3; 
+    public const int NONE = 0;
+    public const int GROW = 1;
+    public const int WATER = 2;
+    public const int COLLECT = 3; 
     private int id;
     private FarmProductType         type;
     private int                     _plantDuration;

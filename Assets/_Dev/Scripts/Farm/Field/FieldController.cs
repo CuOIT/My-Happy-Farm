@@ -8,6 +8,8 @@ public class FieldController : MonoBehaviour,IField
     private Collider col;
     [SerializeField] List<FieldCell>        fields;
 
+    public List<FieldCell> FieldCells => fields;
+
     [SerializeField] FarmProductTypeData    plantType;
 
     [SerializeField] GameObject             _info;
