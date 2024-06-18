@@ -643,7 +643,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719541164166968808}
-  - component: {fileID: 719541164166968811}
   - component: {fileID: 719541164166968806}
   - component: {fileID: 719541164166968805}
   - component: {fileID: 8544781445682607564}
@@ -652,7 +651,7 @@ GameObject:
   - component: {fileID: 7964233475037816972}
   - component: {fileID: 1918739021675339020}
   - component: {fileID: 2491176063824878825}
-  - component: {fileID: 5738756425413129528}
+  - component: {fileID: 6046092666511641957}
   m_Layer: 7
   m_Name: Farmer
   m_TagString: Player
@@ -679,29 +678,6 @@ Transform:
   - {fileID: 387277918417415748}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &719541164166968811
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719541164166968812}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!143 &719541164166968806
 CharacterController:
   m_ObjectHideFlags: 0
@@ -740,14 +716,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ffa978a0820354583b26310f07e3e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 8544781445682607564}
-  _playerSpeed: 3
-  _zoneController: {fileID: 5468007513326702802}
-  _collectProductEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
-  _collectProductGOEvent: {fileID: 11400000, guid: 91589753f8f0cde44bf437141f139cdf, type: 2}
-  _decreaseProductEvent: 0
-  collectorGO: {fileID: 0}
   _charController: {fileID: 719541164166968806}
+  _playerSpeed: 3
   joystick: {fileID: 7549497458008209893}
   canMove: 1
   groundMask:
@@ -790,7 +760,7 @@ MonoBehaviour:
   _eventListener:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719541164166968805}
+      - m_Target: {fileID: 6046092666511641957}
         m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
         m_MethodName: GrowPlant
         m_Mode: 1
@@ -818,7 +788,7 @@ MonoBehaviour:
   _eventListener:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719541164166968805}
+      - m_Target: {fileID: 6046092666511641957}
         m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
         m_MethodName: WaterPlant
         m_Mode: 1
@@ -846,7 +816,7 @@ MonoBehaviour:
   _eventListener:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719541164166968805}
+      - m_Target: {fileID: 6046092666511641957}
         m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
         m_MethodName: CollectPlant
         m_Mode: 1
@@ -874,7 +844,7 @@ MonoBehaviour:
   _eventListener:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719541164166968805}
+      - m_Target: {fileID: 6046092666511641957}
         m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
         m_MethodName: LeaveField
         m_Mode: 1
@@ -899,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 8469143043398858457}
---- !u!114 &5738756425413129528
+--- !u!114 &6046092666511641957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -908,12 +878,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 719541164166968812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b11c509a6893746890159e5f46dc3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 70da4ab5c9d36ad4e85220e80990eada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: {fileID: 11400000, guid: d831879c83facdc4bb071f03021e9700, type: 2}
-  spentMoneyEvent: {fileID: 11400000, guid: bb65aa7dd2151014ba9d643ade35908b, type: 2}
-  coinPrefab: {fileID: 902690222992337792, guid: 81e97120189f99d4abbab7deebae0779, type: 3}
+  _zoneController: {fileID: 5468007513326702802}
+  _collectProductEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
+  _collectProductGOEvent: {fileID: 11400000, guid: 91589753f8f0cde44bf437141f139cdf, type: 2}
+  collectorGO: {fileID: 0}
 --- !u!1 &719541164297516876
 GameObject:
   m_ObjectHideFlags: 0

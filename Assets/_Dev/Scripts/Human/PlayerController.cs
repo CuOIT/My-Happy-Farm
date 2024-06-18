@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : Farmer
+public class PlayerController : MonoBehaviour 
 {
     [SerializeField] CharacterController _charController;
+    private Animator _animator;
+    [SerializeField] float _playerSpeed;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float jumpHeight = 1.0f;
@@ -14,6 +16,10 @@ public class PlayerController : Farmer
     [SerializeField] Joystick joystick;
     public bool canMove;
 
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
     void Update()
     {
         if(canMove)

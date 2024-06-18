@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class Farmer : MonoBehaviour,IHarvest
 {
-    [SerializeField] protected Animator _animator;
-    [SerializeField] protected float _playerSpeed;
+    private Animator _animator;
     [SerializeField] protected FarmZoneController _zoneController;
     [SerializeField] protected ProductNumEvent _collectProductEvent;
     [SerializeField] protected GameObjectEvent _collectProductGOEvent;
-    [SerializeField] protected float _decreaseProductEvent;
     [SerializeField] protected GameObject collectorGO;
     [SerializeField] ICollector collector;
     public void Start()
