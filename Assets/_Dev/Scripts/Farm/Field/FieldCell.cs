@@ -11,10 +11,10 @@ using Random = UnityEngine.Random;
 public class FieldCell : MonoBehaviour
 {
 
+    public const int COLLECT = -1; 
     public const int NONE = 0;
     public const int GROW = 1;
     public const int WATER = 2;
-    public const int COLLECT = 3; 
     private int id;
     private FarmProductType         type;
     private int                     _plantDuration;
@@ -123,7 +123,6 @@ public class FieldCell : MonoBehaviour
         float Z = Random.Range(0,10);
         return Quaternion.Euler(X, Y, Z);
     }
-    
 
     public int GetState()
     {
@@ -145,7 +144,7 @@ public class FieldCell : MonoBehaviour
         SetState(WATER);
     }
 
-    public void GrowUp()
+    void GrowUp()
     {
         SetState(COLLECT);
     }
@@ -157,19 +156,18 @@ public class FieldCell : MonoBehaviour
         int num = 1;
         GameObject product= GameManager.Instance.pooler.SpawnFromPool(type.ToString(), transform.position, Quaternion.identity);
         ProductNum productNum  = new ProductNum(type, num);
-        farmer.Harvest(product,productNum);
+        farmer?.Harvest(product,productNum);
     }
-
-    public void Water()
+    void Water()
     {
         _waterField.SetActive(true);
     }
-    public void UnWater()
+    void UnWater()
     {
         _waterField.SetActive(false);
     }
 
-    private void Update()
+    void Update()
     {
         if (_state == WATER)
         {
@@ -183,10 +181,8 @@ public class FieldCell : MonoBehaviour
             }
         }
     }
-    public void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        IHarvest farmer = other.GetComponentInParent<IHarvest>();
-        if (farmer==null) return;
         if (other.CompareTag("WATERZONE"))
         {
             WaterPlant();
@@ -196,6 +192,7 @@ public class FieldCell : MonoBehaviour
             GrowPlant();
         }
         else if (other.CompareTag("COLLECTZONE")) {
+            IHarvest farmer = other.GetComponentInParent<IHarvest>();
             CollectPlant(farmer);
         };
     }

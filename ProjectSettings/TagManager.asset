@@ -10,6 +10,8 @@ TagManager:
   - GROWZONE
   - WATERZONE
   - COLLECTZONE
+  - Cage
+  - Field
   layers:
   - Default
   - TransparentFX

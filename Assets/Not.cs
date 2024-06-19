@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmerAnimal : MonoBehaviour
+public class Not : MonoBehaviour
 {
     [SerializeField] ProductData productData;
     // Start is called before the first frame update

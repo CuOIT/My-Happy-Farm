@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 173551769911417801}
   m_Layer: 0
   m_Name: SheepCage
-  m_TagString: Untagged
+  m_TagString: Cage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -490,10 +490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bc5f1e15984aa45808f9364ac8b46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 6183287109018584097}
   countDownTime: {fileID: 7430676403881238349}
   needToFeed: {fileID: 2011615226487950308}
-  lastTimeFeed: {fileID: 11400000, guid: a42d6e8b071d10848a3d770921d69833, type: 2}
+  timeTxt: {fileID: 8535142403066227954}
+  lastTimeFeeed: {fileID: 0}
   productNum:
     type: 12
     num: 2
@@ -501,10 +501,7 @@ MonoBehaviour:
     type: 8
     num: 1
   timeToHungry: 7200
-  timeTxt: {fileID: 8535142403066227954}
-  animalUI: {fileID: 0}
   feedEvent: {fileID: 11400000, guid: 6a72e6956963f2b4c9811a9577a21b4e, type: 2}
-  collectEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
 --- !u!65 &173551769911417801
 BoxCollider:
   m_ObjectHideFlags: 0

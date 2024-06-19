@@ -10,6 +10,15 @@ public class ProductData : LocalData<Dictionary<FarmProductType,int>>
 {
     [SerializeField] List<ProductNum> defaultProductNum;
 
+    public int GetCapacity()
+    {
+        int num = 0;
+        foreach (var item in Value)
+        {
+            num += item.Value;
+        }
+        return num;
+    }
     
     protected override void Init()
     {
@@ -26,16 +35,31 @@ public class ProductData : LocalData<Dictionary<FarmProductType,int>>
         {
             if (!Value.ContainsKey((FarmProductType)i))
             {
-                AddProduction((FarmProductType)i, 0);
+                Value.Add((FarmProductType)i, 0);
             }
         }
     }
     [Button]
-    public void AddProduction(FarmProductType type,int num)
+    public void Add(ProductNum productNum)
     {
-        if (Value.ContainsKey(type)) Value.Remove(type);
-        Value.Add(type, num);
+        if (!Value.ContainsKey(productNum.type))
+        {
+            Value.Add(productNum.type, 0);
+        }
+        Value[productNum.type] += productNum.num;
         SaveData();
     }
     
+    public void Consume(ProductNum productNum)
+    {
+        if (!Value.ContainsKey(productNum.type))
+        {
+            Value.Add(productNum.type, 0);
+            return;
+        }
+        int num = Value[productNum.type] - productNum.num;
+        if (num < 0) { num= 0; }
+        Value[productNum.type] = num;
+        SaveData();
+    }
 }

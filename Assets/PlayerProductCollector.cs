@@ -1,51 +1,17 @@
-using Assets._Dev.Scripts;
-using Assets._Dev.SO._CustomEvent;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
-public class PlayerProductCollector : MonoBehaviour, ICollector
+public class PlayerProductCollectorUI : MonoBehaviour
 {
-    [SerializeField] ProductData products;
-
-    public void Start()
-    {
-        InitProductNum();
-    }
-
-    public void InitProductNum()
-    {
-
-    }
-    public bool HaveProduct(ProductNum productNum)
-    {
-        if (!products.Value.ContainsKey(productNum.type))
-        {
-            return false;
-        }
-        else
-        {
-            return products.Value[productNum.type] >= productNum.num;
-        }
-    }
-
-    public void Collect(ProductNum productNum)
-    {
-        Dictionary<FarmProductType, int> dic=products.Value;
-        int newValue = dic[productNum.type] + productNum.num;
-        dic[productNum.type] = newValue;
-        products.Value = dic;
-    }
-
-    public void Consume(ProductNum productNum)
-    {
-        Dictionary<FarmProductType, int> dic = products.Value;
-        int newValue = Mathf.Clamp(dic[productNum.type] - productNum.num,0,99999999);
-        dic[productNum.type] = newValue;
-        products.Value = dic;
-    }
-   
+    [SerializeField] float delayCollect;
     public void OnCollectProductGO(GameObject go)
     {
+        StartCoroutine(Collect(go));
+    }
+
+    private IEnumerator Collect(GameObject go)
+    {
+        yield return new WaitForSeconds(delayCollect);
         ProductDrop productDrop = go.GetComponent<ProductDrop>();
         productDrop.MoveUIToTarget(transform.position);
     }

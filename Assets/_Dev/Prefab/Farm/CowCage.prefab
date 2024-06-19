@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 6724149032800777478}
   m_Layer: 0
   m_Name: CowCage
-  m_TagString: Untagged
+  m_TagString: Cage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,10 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bc5f1e15984aa45808f9364ac8b46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 46336689081417550}
   countDownTime: {fileID: 1464013788116977066}
   needToFeed: {fileID: 8363831174825419590}
-  lastTimeFeed: {fileID: 0}
+  timeTxt: {fileID: 3968968098868587149}
+  lastTimeFeeed: {fileID: 0}
   productNum:
     type: 11
     num: 2
@@ -275,10 +275,7 @@ MonoBehaviour:
     type: 9
     num: 1
   timeToHungry: 4800
-  timeTxt: {fileID: 3968968098868587149}
-  animalUI: {fileID: 0}
   feedEvent: {fileID: 11400000, guid: 6a72e6956963f2b4c9811a9577a21b4e, type: 2}
-  collectEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
 --- !u!65 &6724149032800777478
 BoxCollider:
   m_ObjectHideFlags: 0

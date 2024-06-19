@@ -18,6 +18,7 @@ public class Mission : ScriptableObject
 
     public virtual void IncrementProgress(int num)
     {
+        if (collected) return;
         missionChange?.Invoke();
         currentProgress+=num;
         if (currentProgress >= targetProgress)

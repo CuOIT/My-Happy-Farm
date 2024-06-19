@@ -1,32 +1,32 @@
+using Assets._Dev.SO._CustomEvent;
 using Cage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimalUI : MonoBehaviour, IAnimalUI
+public class AnimalUI : MonoBehaviour
 {
-    ICage currentCage;
-
-    [Serializable]
-    private struct TypeBtn
+    private AnimalFarmer animalFarmer;
+    [Serializable]private struct TypeBtn
     {
         public FarmProductType type;
         public Button btn;
     }
-
     [SerializeField] List<TypeBtn> types;
+    [SerializeField] TextMeshProUGUI foodNum;
     Button currentBtn;
 
-    public void Init(FarmProductType type,ICage cage)
+    public void Init(ProductNum foodRequire)
     {
-        currentCage = cage;
         HideBtn();
-        currentBtn = types.Find((e) => e.type == type).btn;
+        currentBtn = types.Find((e) => e.type == foodRequire.type).btn;
         currentBtn.gameObject.SetActive(true);
         currentBtn.onClick.RemoveAllListeners();
         currentBtn.onClick.AddListener(OnClickFeed);
+        foodNum.SetText(foodRequire.num.ToString());
     }
     public void HideBtn()
     {
@@ -37,16 +37,16 @@ public class AnimalUI : MonoBehaviour, IAnimalUI
     }
     public void OnClickFeed()
     {
-        if (currentCage.EnoughBarn())
+        if (animalFarmer.EnoughBarn())
         {
-            currentCage.Feed();
+            animalFarmer.Feed();
+            Hide();
         }
         else
         {
             GameManager.Instance.Notice("Not enough barn");
         }
     }
-
     public void Show()
     {
         gameObject.SetActive(true);
@@ -57,9 +57,3 @@ public class AnimalUI : MonoBehaviour, IAnimalUI
     }
 }
 
-public interface IAnimalUI
-{
-    public void Init(FarmProductType type, ICage cage);
-    public void Show();
-    public void Hide();
-}

@@ -1,21 +1,22 @@
     using _Template.Event;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FieldUI : MonoBehaviour,IFieldUI
+public class FieldUI : MonoBehaviour
 {
     [SerializeField] GameObject firstAction;
 
+    [SerializeField] TextMeshProUGUI botCostTxt;
+
     [SerializeField] GameObject _seedAction;
+
+    [SerializeField] GameObject _seedBotAction;
 
     private GameObject currentAction;
 
-    [SerializeField] SimpleEvent _confirmSeedEvent;
-    [SerializeField] SimpleEvent _confirmWaterEvent;
-    [SerializeField] SimpleEvent _confirmCollectEvent;
-    [SerializeField] SimpleEvent _confirmLeaveFieldEvent;
     [Serializable]
     struct PlantButton
     {
@@ -23,24 +24,17 @@ public class FieldUI : MonoBehaviour,IFieldUI
         public Button btn;
     }
     [SerializeField] List<PlantButton> plantButtons;
-    private Dictionary<FarmProductType,Button> dicsBtn;
+
+    [SerializeField] List<PlantButton> plantButtonsForBot;
     private FarmProductType _type;
-    private FieldController _currentField;
+    [SerializeField]private PlayerFieldFarmer _farmer;
+
     public void Awake()
     {
-        dicsBtn = new();
-        foreach(var plantbutton in plantButtons)
+        foreach(var plantButton in plantButtons)
         {
-            if (!dicsBtn.ContainsKey(plantbutton.type))
-            {
-                dicsBtn.Add(plantbutton.type, plantbutton.btn);
-            }
+            plantButton.btn.onClick.AddListener(() => OnClickSetPlantForBot(plantButton.type));
         }
-    }
-
-    public void InitField(FieldController field)
-    {
-        _currentField = field;
     }
     public void InitType(FarmProductType type)
     {
@@ -54,11 +48,20 @@ public class FieldUI : MonoBehaviour,IFieldUI
             {
                 plantbutton.btn.gameObject.SetActive(true);
             }
-        }
+        }        
     }
-    public void SetType(FarmProductType type)
+
+    public void  InitBotStatus(int botCost)
     {
-        _currentField?.SetPlantType(type);
+        if (botCost > 0)
+        {
+            botCostTxt.transform.parent.gameObject.SetActive(true);
+            botCostTxt.SetText(botCost.ToString());
+        }
+        else
+        {
+            botCostTxt.transform.parent.gameObject.SetActive(false);
+        }
     }
     public void SetCurrentAction(GameObject action)
     {
@@ -70,7 +73,6 @@ public class FieldUI : MonoBehaviour,IFieldUI
         currentAction?.SetActive(true);
     }
 
-
     public void ShowAction()
     {
         SetCurrentAction(firstAction);
@@ -79,34 +81,42 @@ public class FieldUI : MonoBehaviour,IFieldUI
     {
         SetCurrentAction(_seedAction);
     }
+    public void ShowBotPlantSeedAction()
+    {
+        SetCurrentAction(_seedBotAction);
+    }
     public void UnShow()
     {
         SetCurrentAction(null);
-        _confirmLeaveFieldEvent.RaiseEvent();
+        _farmer.LeaveField();
     }
-
-
-
     public void OnClickGrowAction()
     {
-        InitType( _currentField.GetPlantType());
+        InitType(_farmer.GetFieldType());
         SetCurrentAction(_seedAction);
     }
     public void OnClickOfSeedAction(FarmProductType type)
     {
         SetCurrentAction(null);
-        _currentField.SetPlantType(type);
-        _confirmSeedEvent.RaiseEvent();
+        _farmer.GrowPlant(type);
     }
     public void OnClickOfWaterAction()
     {
-        //_waterAction.SetActive(false);
-        _confirmWaterEvent.RaiseEvent();
+        _farmer.WaterPlant();
     }
     public void OnClickOfCollectAction()
     {
-       // _collectAction.SetActive(false);
-        _confirmCollectEvent.RaiseEvent();
+        _farmer.CollectPlant();
     }
 
+    public void OnClickHireAction()
+    {
+        _farmer.Hire();
+        SetCurrentAction(null);
+    }
+    public void OnClickSetPlantForBot(FarmProductType type)
+    {
+        _farmer.SetPlantType(type);
+        SetCurrentAction(null);
+    }
 }

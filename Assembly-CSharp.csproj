@@ -69,10 +69,10 @@
     <Compile Include="Assets\_Dev\Scripts\Human\ICollector.cs" />
     <Compile Include="Assets\_Dev\Scripts\DailyMission\MissionUI.cs" />
     <Compile Include="Assets\GridSupport.cs" />
+    <Compile Include="Assets\BotCollector.cs" />
     <Compile Include="Assets\MobileDepthWater\Scripts\CameraDepthSlider.cs" />
     <Compile Include="Assets\_Template\Scipt\Input\Joystick.cs" />
     <Compile Include="Assets\Wallet.cs" />
-    <Compile Include="Assets\FarmerAnimal.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\ProductImage\CropTypeList.cs" />
     <Compile Include="Assets\LevelController.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\LevelInfo\LevelEXPInfos.cs" />
@@ -121,9 +121,9 @@
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Data\MissionData.cs" />
     <Compile Include="Assets\FieldSquare.cs" />
     <Compile Include="Assets\Container.cs" />
+    <Compile Include="Assets\_Dev\Scripts\Cage\AnimalFarmer.cs" />
     <Compile Include="Assets\ItemBoxUI.cs" />
     <Compile Include="Assets\_Dev\Scripts\Bot\BotMovement.cs" />
-    <Compile Include="Assets\_Dev\Scripts\Human\Farmer.cs" />
     <Compile Include="Assets\ConfirmSell.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\IntEventListener.cs" />
     <Compile Include="Assets\MobileDepthWater\Scripts\Water\WaterMaterialSwitcher.cs" />
@@ -146,6 +146,7 @@
     <Compile Include="Assets\_Template\Scipt\Data\StringData.cs" />
     <Compile Include="Assets\_Template\Scipt\ObjectPooling\ObjectPooler.cs" />
     <Compile Include="Assets\Backpack.cs" />
+    <Compile Include="Assets\_Dev\Scripts\Human\PlayerFieldFarmer.cs" />
     <Compile Include="Assets\_Dev\Scripts\Cage\FeedingState.cs" />
     <Compile Include="Assets\_Dev\Scripts\Human\FarmZoneController.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\Vector3Event_1.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Assets\_Dev\Scripts\Farm\Plant\PlantAnim.cs" />
     <Compile Include="Assets\ItemNumUI.cs" />
     <Compile Include="Assets\_Dev\Scripts\UI\IFieldUI.cs" />
+    <Compile Include="Assets\BarnCollector.cs" />
     <Compile Include="Assets\_Dev\Scripts\UI\FieldUI.cs" />
     <Compile Include="Assets\_Dev\Scripts\Cage\CageState.cs" />
     <Compile Include="Assets\_Dev\Scripts\Farm\Field\IField.cs" />
@@ -176,9 +178,11 @@
     <Compile Include="Assets\_Dev\Scripts\GlobalStruct\GlobalStructs.cs" />
     <Compile Include="Assets\PlayerProductCollector.cs" />
     <Compile Include="Assets\_Dev\Scripts\Human\Bussiness.cs" />
+    <Compile Include="Assets\Not.cs" />
     <Compile Include="Assets\_Dev\Scripts\Farm\Parcel\ParcelController.cs" />
     <Compile Include="Assets\CookingZone.cs" />
     <Compile Include="Assets\_Template\Scipt\Data\IData.cs" />
+    <Compile Include="Assets\_Dev\Scripts\Human\FieldFarmer.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\ParcelInfo\ParcelInfoSO.cs" />
     <Compile Include="Assets\_Template\Scipt\Utils\StartSceneScript.cs" />
     <Compile Include="Assets\LevelShow.cs" />

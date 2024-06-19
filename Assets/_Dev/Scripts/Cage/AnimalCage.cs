@@ -15,61 +15,35 @@ namespace Cage
 
     public class AnimalCage : MonoBehaviour,ICage
     {
-        [SerializeField] GameObject canvas;
+        private bool isHungry;
+
         [SerializeField] GameObject countDownTime;
         [SerializeField] GameObject needToFeed;
-        [SerializeField] StringData lastTimeFeed;
+        [SerializeField] TextMeshProUGUI timeTxt;
+
+        //Data
+        [SerializeField] DateTimeData lastTimeFeeed;
+
         [SerializeField] ProductNum productNum;
         [SerializeField] ProductNum foodRequire;
         [SerializeField] int timeToHungry;
-        private DateTime lastTime;
+
         List<IAnimal> animals;
-
-        [SerializeField] TextMeshProUGUI timeTxt;
-
-    /*    [SerializeField] GameObject animalUIGO;
-        private IAnimalUI animalUI;*/
-
-        [SerializeField] AnimalUI animalUI;
-        private bool isHungry;
-
-        private const string FORMAT = "yyyy/MM/dd HH:mm:ss";
-
         [SerializeField] ProductNumEvent feedEvent;
-        [SerializeField] ProductNumEvent collectEvent;
-        public void Awake()
+        void Awake()
         {
-            if(lastTimeFeed!=null)
-            lastTime = DateTime.ParseExact(lastTimeFeed.Value, FORMAT,CultureInfo.InvariantCulture);
+           /* if(lastTimeFeed!=null)
+            lastTime = DateTime.ParseExact(lastTimeFeed.Value, FORMAT,CultureInfo.InvariantCulture);*/
             //animalUI = animalUIGO.GetComponent<IAnimalUI>();
             animals=GetComponentsInChildren<IAnimal>().ToList();
         }
-
-        public bool EnoughBarn()
-        {
-            return farmer.HaveProduct(foodRequire);
-        }
-
-        [Button]
-        public void Feed()
-        {
-            isHungry = false;
-            lastTime = DateTime.Now;
-            lastTimeFeed.Value =lastTime.ToString(FORMAT);
-            Harvest();
-            ShowTime();
-            AnimalFeed();
-            farmer.Consume(foodRequire);
-            feedEvent.RaiseEvent(foodRequire);  
-        }
-
-        public void Update()
+        void Update()
         {
             if (!isHungry)
             {
                 DateTime now = DateTime.Now;
-                TimeSpan timeSpan = now - lastTime;
-                int time = (int)timeSpan.TotalSeconds;
+                TimeSpan timeSpan = now - lastTimeFeeed.Value;
+                long time = (long)timeSpan.TotalSeconds;
                 if (time >= timeToHungry)
                 {
                     isHungry = true;
@@ -77,51 +51,40 @@ namespace Cage
                 }
                 else
                 {
-                    int timeToNextHungry = timeToHungry - time;
+                    long timeToNextHungry = timeToHungry - time;
                     int minute = (int)timeToNextHungry/60;
-                    int second = timeToNextHungry - 60*minute;
+                    int second = (int)(timeToNextHungry - 60*minute);
                     timeTxt.SetText(minute+":"+second);
                     ShowTime();
                 }
             }
             
         }
-
-        public void ShowTime()
+        void ShowTime()
         {
             countDownTime.SetActive(true);
             needToFeed.SetActive(false);
         }
-
-        public void ShowUINeedToFeed()
+        void AnimalFeed()
+        {
+            foreach(var animals in animals)
+            {
+                animals.OnFeed();
+            }
+        }
+        void ShowUINeedToFeed()
         {
             needToFeed.SetActive(true);
             countDownTime.SetActive(false);
         }
-
-        private IHarvest farmer;
-
-        [Button]
-        public void Harvest()
-        {
-            int num = productNum.num;
-            for(int i = 0; i < num; i++)
-            {
-                GameObject product = GameManager.Instance.pooler.SpawnFromPool(productNum.type.ToString(), transform.position, Quaternion.identity);
-                farmer.Harvest(product, new ProductNum(productNum.type,1));
-            }
-            collectEvent.RaiseEvent(productNum);
-        }
-
-        public void AnimalShowHungry()
+        void AnimalShowHungry()
         {
             foreach(var animal in animals)
             {
                 animal.ShowHungry();
             }
         }
-
-        public void AnimalShowGreet()
+        void AnimalShowGreet()
         {
             foreach (var animal in animals)
             {
@@ -130,46 +93,55 @@ namespace Cage
 
         }
 
-        public void AnimalFeed()
+
+        [Button]
+        public void Feed()
         {
-            foreach(var animals in animals)
-            {
-                animals.OnFeed();
-            }
-        }
-        public void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                if (isHungry)
-                {
-                    farmer = other.GetComponent<IHarvest>();
-                    animalUI.Show();
-                    animalUI.Init(foodRequire.type, this);
-                    AnimalShowHungry();
-                }
-                else
-                {
-                    AnimalShowGreet();
-                }
-            }
+            isHungry = false;
+            lastTimeFeeed.Value = DateTime.Now;
+            //Harvest();
+            ShowTime();
+            AnimalFeed();
+            //farmer.Consume(foodRequire);
+            feedEvent.RaiseEvent(foodRequire);  
         }
 
-        public void OnTriggerExit(Collider other)
+        public bool IsHungry()
         {
-            if (other.CompareTag("Player"))
+            return isHungry;
+        }
+
+        public ProductNum GetFoodType()
+        {
+            return foodRequire;
+        }
+
+        public ProductNum GetProductType()
+        {
+            return productNum;
+        }
+
+        public void OnHumanComing()
+        {
+            if (isHungry)
             {
-                animalUI.Hide();
+                AnimalShowHungry();
+            }
+            else
+            {
+                AnimalShowGreet();
             }
         }
+       
     }
 
 
     public interface ICage
     {     
-
         void Feed();
-
-        bool EnoughBarn();
+        bool IsHungry();
+        ProductNum GetFoodType();
+        ProductNum GetProductType();
+        void OnHumanComing();
     }
 }

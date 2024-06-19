@@ -28,6 +28,9 @@ public class ProductDrop : MonoBehaviour,IPooler
         fruitUIDrop.gameObject.SetActive(true);
         fruitUIDrop.transform.position = Camera.main.WorldToScreenPoint(visualFruitDrop.transform.position);
         fruitUIDrop.DOMove(des, 1).OnComplete(AutoDespawn);
+    }public void MoveToTarget(Vector3 des)
+    {
+        transform.DOMove(des, 1).OnComplete(AutoDespawn);
     }
     public void OnSpawn()
     {

@@ -279,8 +279,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719541163439993366}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00066083675, y: 0.000000010059179, z: -0.000000007791164, w: 0.9999998}
-  m_LocalPosition: {x: 0.000000026896837, y: 0.13688278, z: 28.241482}
+  m_LocalRotation: {x: -0.00066081627, y: -0, z: 0.000000014901163, w: 0.9999998}
+  m_LocalPosition: {x: -0.0000038146973, y: 0.13690186, z: 28.241482}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -580,8 +580,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719541163888128012}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.017528743, y: -0.000000019098778, z: 0.000000015356465, w: 0.9998464}
-  m_LocalPosition: {x: 0.0000000010399337, y: 0.13688278, z: 28.241482}
+  m_LocalRotation: {x: 0.017528778, y: -0.000000014901161, z: 0.000000014901161, w: 0.9998464}
+  m_LocalPosition: {x: -0.0000038146973, y: 0.13690186, z: 28.241482}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -646,12 +646,9 @@ GameObject:
   - component: {fileID: 719541164166968806}
   - component: {fileID: 719541164166968805}
   - component: {fileID: 8544781445682607564}
-  - component: {fileID: 6915127519117192422}
-  - component: {fileID: 2782436107196567348}
-  - component: {fileID: 7964233475037816972}
-  - component: {fileID: 1918739021675339020}
+  - component: {fileID: 6579111725050233622}
   - component: {fileID: 2491176063824878825}
-  - component: {fileID: 6046092666511641957}
+  - component: {fileID: 1047157829824076462}
   m_Layer: 7
   m_Name: Farmer
   m_TagString: Player
@@ -744,7 +741,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6915127519117192422
+--- !u!114 &6579111725050233622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -753,109 +750,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 719541164166968812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263ba22a81a94ad4f8f588c715d53bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 52304638c3a5731469ae73f67e5391dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: 313a2baa77efd7a479f2c6f27b5aa85c, type: 2}
-  _eventListener:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6046092666511641957}
-        m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
-        m_MethodName: GrowPlant
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2782436107196567348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719541164166968812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263ba22a81a94ad4f8f588c715d53bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: bcbe531994fb63c4993cdc461eca0652, type: 2}
-  _eventListener:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6046092666511641957}
-        m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
-        m_MethodName: WaterPlant
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7964233475037816972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719541164166968812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263ba22a81a94ad4f8f588c715d53bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: dd3cb9efcf8296240924815e305b9dba, type: 2}
-  _eventListener:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6046092666511641957}
-        m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
-        m_MethodName: CollectPlant
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1918739021675339020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719541164166968812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263ba22a81a94ad4f8f588c715d53bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: 2cd06dc5de038374790a1515281d614a, type: 2}
-  _eventListener:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6046092666511641957}
-        m_TargetAssemblyTypeName: Farmer, Assembly-CSharp
-        m_MethodName: LeaveField
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  productData: {fileID: 11400000, guid: bde0aa38abaca7245b53d8bc208fcc66, type: 2}
+  animalUI: {fileID: 0}
 --- !u!114 &2491176063824878825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,7 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 8469143043398858457}
---- !u!114 &6046092666511641957
+--- !u!114 &1047157829824076462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -878,13 +777,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 719541164166968812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70da4ab5c9d36ad4e85220e80990eada, type: 3}
+  m_Script: {fileID: 11500000, guid: c3b3da3cd8cda714a93bac56612720a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _productData: {fileID: 11400000, guid: bde0aa38abaca7245b53d8bc208fcc66, type: 2}
   _zoneController: {fileID: 5468007513326702802}
   _collectProductEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
   _collectProductGOEvent: {fileID: 11400000, guid: 91589753f8f0cde44bf437141f139cdf, type: 2}
-  collectorGO: {fileID: 0}
+  _fieldUI: {fileID: 0}
 --- !u!1 &719541164297516876
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,8 +810,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719541164297516876}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.32389116, y: 1e-45, z: -0, w: 0.94609433}
-  m_LocalPosition: {x: 0, y: 19.7, z: -25.4}
+  m_LocalRotation: {x: 0.07948513, y: 0.91716284, z: -0.3139869, w: 0.2321779}
+  m_LocalPosition: {x: -12.085442, y: 19.7, z: 22.340601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -985,8 +885,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719541164524270925}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.018802226, y: 0.000000018034017, z: -0.000000013451677, w: 0.9998232}
-  m_LocalPosition: {x: 0.000000011011224, y: 0.13688278, z: 28.241482}
+  m_LocalRotation: {x: -0.018802237, y: 0.000000044703484, z: -0.000000022351742, w: 0.9998233}
+  m_LocalPosition: {x: -0.0000038146973, y: 0.13690186, z: 28.241482}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

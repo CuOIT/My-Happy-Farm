@@ -4,68 +4,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Farmer : MonoBehaviour,IHarvest
+public class FieldFarmer : MonoBehaviour,IHarvest
 {
-    private Animator _animator;
+    protected Animator _animator;
+    [SerializeField] protected ProductData _productData;
     [SerializeField] protected FarmZoneController _zoneController;
     [SerializeField] protected ProductNumEvent _collectProductEvent;
     [SerializeField] protected GameObjectEvent _collectProductGOEvent;
-    [SerializeField] protected GameObject collectorGO;
-    [SerializeField] ICollector collector;
-    public void Start()
+
+    protected IField currentField;
+    public void Awake()
     {
         Init();
     }
     public virtual void Init()
     {
         _animator = GetComponent<Animator>();
-        collector=collectorGO.GetComponent<ICollector>();
-    }
 
-    public void GrowPlant()
+    }
+    public void GrowPlant(FarmProductType type = FarmProductType.NONE)
     {
+        if(type != FarmProductType.NONE && currentField.GetPlantType()==FarmProductType.NONE) currentField.SetPlantType(type);
         EnterField();
         _zoneController.TurnOnGrowZone();
         _animator.SetTrigger("grow");
     }
-
+    public void SetCurrentField(FieldController field)
+    {
+        currentField= field;
+    }
     public void WaterPlant()
     {
         EnterField();
         _animator.SetTrigger("water");
         _zoneController.TurnOnWaterZone();
     }
-
     public void CollectPlant()
     {
         EnterField();
         _animator.SetTrigger("collect");
         _zoneController.TurnOnCollectZone();
     }
-
-    private float delay=2;
-    protected virtual IEnumerator AsyncHarvest(GameObject product,ProductNum productNum)
-    {
-        yield return new WaitForSeconds(delay);
-        collector?.Collect(productNum);
-        _collectProductEvent.RaiseEvent(productNum);
-        _collectProductGOEvent.RaiseEvent(product);
-    }
     public void Harvest(GameObject product,ProductNum productNum)
     {
-        StartCoroutine(AsyncHarvest(product,productNum));
+        _productData.Add(productNum);
+        _collectProductEvent?.RaiseEvent(productNum);
+        if(product!=null)
+            _collectProductGOEvent?.RaiseEvent(product);
     }
-    
-    public bool HaveProduct(ProductNum productNum)
-    {
-        return collector.HaveProduct(productNum);
-    }
-
     public void Consume(ProductNum productNum)
     {
-        collector.Consume(productNum);
+        _productData.Consume(productNum);
     }
-    public void EnterField()
+    void EnterField()
     {
         _animator.SetLayerWeight(_animator.GetLayerIndex("Leg"), 1);
     }
@@ -75,12 +66,25 @@ public class Farmer : MonoBehaviour,IHarvest
         _animator.SetTrigger("leaveField");
         _zoneController.TurnOffAll();
     }
+    public void SetFieldPlantType(FarmProductType type)
+    {
+        currentField.SetPlantType(type);
+    }
+
+    public FarmProductType GetFieldType()
+    {
+        return currentField.GetPlantType();
+    }
 }
 
 public interface IHarvest
 {
-    public void Consume(ProductNum productNum);
-    bool HaveProduct(ProductNum productNum);
-    void Harvest(GameObject product,ProductNum productNum);
+    void Harvest(GameObject product, ProductNum productNum);
+}
 
+public interface IFieldFarmer
+{
+    void GrowPlant();
+    void WaterPlant();
+    void CollectPlant();
 }

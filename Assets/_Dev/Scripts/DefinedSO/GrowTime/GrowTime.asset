@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growTimes:
   - type: 1
-    plantDurationInSec: 2
+    plantDurationInSec: 200
   - type: 2
     plantDurationInSec: 3
   - type: 3
