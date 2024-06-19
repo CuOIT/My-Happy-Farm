@@ -170,6 +170,7 @@
     <Compile Include="Assets\_Dev\Scripts\Farm\Plant\PlantAnim.cs" />
     <Compile Include="Assets\ItemNumUI.cs" />
     <Compile Include="Assets\_Dev\Scripts\UI\IFieldUI.cs" />
+    <Compile Include="Assets\PseudoLeaderBoard.cs" />
     <Compile Include="Assets\BarnCollector.cs" />
     <Compile Include="Assets\_Dev\Scripts\UI\FieldUI.cs" />
     <Compile Include="Assets\_Dev\Scripts\Cage\CageState.cs" />
