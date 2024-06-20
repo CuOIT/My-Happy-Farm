@@ -9,14 +9,13 @@ using UnityEngine.UI;
 
 public class AnimalUI : MonoBehaviour
 {
-    private AnimalFarmer animalFarmer;
+    [SerializeField] AnimalFarmer animalFarmer;
     [Serializable]private struct TypeBtn
     {
         public FarmProductType type;
         public Button btn;
     }
     [SerializeField] List<TypeBtn> types;
-    [SerializeField] TextMeshProUGUI foodNum;
     Button currentBtn;
 
     public void Init(ProductNum foodRequire)
@@ -26,7 +25,8 @@ public class AnimalUI : MonoBehaviour
         currentBtn.gameObject.SetActive(true);
         currentBtn.onClick.RemoveAllListeners();
         currentBtn.onClick.AddListener(OnClickFeed);
-        foodNum.SetText(foodRequire.num.ToString());
+        /*var foodNum = currentBtn.GetComponentInChildren<TextMeshProUGUI>();
+        foodNum.SetText(foodRequire.num.ToString());*/
     }
     public void HideBtn()
     {

@@ -93,7 +93,7 @@ public class Parcel : MonoBehaviour
             go.SetActive(active);
         }
     }
-
+#if UNITY_EDITOR
     [Button]
     public void InitSO()
     {
@@ -119,5 +119,5 @@ public class Parcel : MonoBehaviour
             parcelInfo = parcelInfoSO   ;
         }
     }
-
+#endif
 }

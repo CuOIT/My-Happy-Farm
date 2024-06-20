@@ -29,7 +29,6 @@ namespace Cage
         [SerializeField] int timeToHungry;
 
         List<IAnimal> animals;
-        [SerializeField] ProductNumEvent feedEvent;
         void Awake()
         {
            /* if(lastTimeFeed!=null)
@@ -99,11 +98,9 @@ namespace Cage
         {
             isHungry = false;
             lastTimeFeeed.Value = DateTime.Now;
-            //Harvest();
             ShowTime();
             AnimalFeed();
-            //farmer.Consume(foodRequire);
-            feedEvent.RaiseEvent(foodRequire);  
+
         }
 
         public bool IsHungry()
@@ -133,11 +130,16 @@ namespace Cage
             }
         }
        
+        public Vector3 GetPos()
+        {
+            return transform.position;
+        }
     }
 
 
     public interface ICage
-    {     
+    {
+        Vector3 GetPos();
         void Feed();
         bool IsHungry();
         ProductNum GetFoodType();

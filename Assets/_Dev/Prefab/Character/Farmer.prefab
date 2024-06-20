@@ -755,6 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productData: {fileID: 11400000, guid: bde0aa38abaca7245b53d8bc208fcc66, type: 2}
   animalUI: {fileID: 0}
+  collectGOEvent: {fileID: 11400000, guid: 91589753f8f0cde44bf437141f139cdf, type: 2}
 --- !u!114 &2491176063824878825
 MonoBehaviour:
   m_ObjectHideFlags: 0
