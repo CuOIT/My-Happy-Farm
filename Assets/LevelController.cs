@@ -43,9 +43,11 @@ public class LevelController : MonoBehaviour
         float process = (float)exp / maxEXP;
         processExp.rectTransform.DOSizeDelta(new Vector2(minWidth+process*length, 0), 0.2f);
     }
-
     public void CollectEXP(int num)
     {
+        GameObject go = GameManager.Instance.pooler.SpawnFromPool("EXP", Vector3.zero, Quaternion.identity);
+        EXPUI exp = go.GetComponent<EXPUI>();
+        exp.ShowEXP(num);
         int nextEXP = Exp.Value + num;
         if (nextEXP >= maxEXP)
         {
@@ -57,7 +59,6 @@ public class LevelController : MonoBehaviour
             SetExp(nextEXP);
         }
     }
-
     void LevelUp()
     {
         int nextLevel = level.Value + 1;

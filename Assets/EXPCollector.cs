@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EXPCollector : MonoBehaviour 
 {
-    [SerializeField] IntEvent collectEXPEvent;
+    private LevelController levelController;
+    public void Awake()
+    {
+        levelController = GetComponent<LevelController>();
+    }
     public void IncreaseEXP(int num)
     {
-        collectEXPEvent.RaiseEvent(num);
+        levelController.CollectEXP(num);
     }
 }

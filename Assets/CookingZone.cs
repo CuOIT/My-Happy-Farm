@@ -1,4 +1,5 @@
 using _Template.Event;
+using Assets._Dev.SO._CustomEvent;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,7 +15,8 @@ public class CookingZone : BaseContainer
     [SerializeField] TextMeshProUGUI t_name;
 
     [SerializeField] MaterialController materialController;
-    [SerializeField] SimpleEvent CookEvent;
+    [SerializeField] SimpleEvent OnClickCookEvent;
+    [SerializeField] ProductNumEvent CookEvent;
 
     [SerializeField] Button cookBtn;
     
@@ -41,7 +43,7 @@ public class CookingZone : BaseContainer
         Recipe recipe = boxToRecipes[item];
         t_name.SetText(recipe.Name.ToString());
         materialController.InitMaterials(recipe.products);
-        CookEvent.RaiseEvent();
+        OnClickCookEvent.RaiseEvent();
         if (CheckEnoughMaterial(recipe))
         {
             cookBtn.GetComponent<Image>().color= Color.white;
@@ -70,14 +72,14 @@ public class CookingZone : BaseContainer
     public void Cook()
     {
         Recipe recipe = boxToRecipes[currentItem];
-        Dictionary<FarmProductType, int> newDic = productData.Value;
+        ProductNum productNumb = new ProductNum(recipe.type,1);
+        
         foreach(var productNum in recipe.products)
         {
-            newDic[productNum.type]-=productNum.num;
+            productData.Consume(productNum);
         }
-        newDic[recipe.type] += 1;
-        productData.Value = newDic;
-
+        productData.Add(productNumb);
+        CookEvent.RaiseEvent(productNumb);
         SetCurrentItem(currentItem);
     }
 }

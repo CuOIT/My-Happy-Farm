@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 994798823086041417}
   - component: {fileID: 6874309776814164493}
   - component: {fileID: 9174054555715890113}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: MilkDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4169530091396065}
   - component: {fileID: 33127442131988000}
   - component: {fileID: 23780932928010063}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Milk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4960082287911494}
   - component: {fileID: 33210652116599319}
   - component: {fileID: 23756674418994730}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

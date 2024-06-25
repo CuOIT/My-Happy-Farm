@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class FieldBotController : FieldFarmer
 {
@@ -67,6 +68,7 @@ public class FieldBotController : FieldFarmer
 
     private IEnumerator GoToBarn()
     {
+        _animator.SetBool("walk", true);
         botMovement.MoveTo(barn.transform.position);
         while(!botMovement.IsAtDestination())
             yield return null;
@@ -133,6 +135,10 @@ public class FieldBotController : FieldFarmer
         defaultType = type;
     }
 
+    public bool HaveFieldActive()
+    {
+        return fieldController.IsActive();
+    }
     public void OnTriggerEnter(Collider other)
     {
         

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: p53
   m_EditorClassIdentifier: 
   Name: p53
-  defaultValue: 100
+  defaultValue: 10000
   _levelUnlock: 7

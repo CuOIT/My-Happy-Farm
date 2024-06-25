@@ -3,35 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wallet : MonoBehaviour,IWallet
+public class Wallet : MonoBehaviour
 {
-    [SerializeField] IntData money;
-    [SerializeField] IntEvent spentMoneyEvent;
-
-    [Button]
-    public void SpendMoney(int amount,Transform des = null)
+    private MoneyController wallet;
+    List<Coroutine> cor;
+    private void Start()
     {
-        int curMon = money.Value;
-        if (curMon < amount)
-        {
-            Debug.LogError("Not enough money to spent: " + amount.ToString());
-        }
-        else
-        {
-            money.Value=curMon-amount;
-            if (des)
-            {
-                StartCoroutine(PlayAnimCoin(transform.position, des.position));
-            }
-            spentMoneyEvent.RaiseEvent(amount);
-        }
+        wallet = GameManager.Instance.moneyController;
+        cor=new List<Coroutine>();
     }
+
     [SerializeField] GameObject coinPrefab;
     private IEnumerator PlayAnimCoin(Vector3 start, Vector3 end)
     {
         GameObject coin = Instantiate(coinPrefab,start,Quaternion.identity);
         float time = 0;
-        float duration = 1.0f; // Time it takes for the coin to reach the crop
+        float duration = 0.5f; // Time it takes for the coin to reach the crop
         Vector3 midPoint = (start + end) / 2 + Vector3.up * 2; // Create a midpoint for the arc
 
         while (time < duration)
@@ -50,8 +37,68 @@ public class Wallet : MonoBehaviour,IWallet
         Destroy(coin);
 
     }
-    public bool IsEnoughMoney(int amount)
+    
+    public void OnTriggerEnter(Collider other)
     {
-        return money.Value >= amount;
+        ILockParcel lockParcel = other.GetComponent<ILockParcel>();
+        if (lockParcel != null )
+        {
+            cor.Add(StartCoroutine(SpendMoneyToUnlock(lockParcel)));
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        ILockParcel lockParcel = other.GetComponent<ILockParcel>();
+        if (lockParcel != null)
+        {
+            for (int i = cor.Count-1; i >=0; i--) {
+                StopCoroutine(cor[i]);
+                cor.RemoveAt(i);
+            }
+        }
+    }
+
+    IEnumerator SpendMoneyToUnlock(ILockParcel lockParcel)
+    {
+        int startNum = lockParcel.GetCost();
+        float duration = 2;
+        float elapsedTime = 0;
+        int currentNum = startNum;
+        bool finished = false;
+        int changeMoney;
+        int nextNum;
+        int maxCoin = 5;
+        int coin = 0;
+        while (!finished)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp(elapsedTime / duration, 0, 1);
+            if (t == 1)
+            {
+                finished = true;
+            }
+            nextNum = Mathf.RoundToInt(Mathf.Lerp(startNum, 0, t));
+            changeMoney = currentNum - nextNum;
+            if (wallet.HaveMoney(changeMoney))
+            {
+                wallet.SpendMoney(changeMoney);
+                currentNum = nextNum;
+                lockParcel.SetMoney(currentNum);
+                if (coin == 0)
+                {
+                    StartCoroutine(PlayAnimCoin(transform.position, lockParcel.GetPos()));
+                }
+                coin = (coin + 1) % maxCoin;
+                if (currentNum <= 0)
+                {
+                    finished = true;
+                }
+            }
+            else{
+                finished = true;
+            }
+            yield return null;
+        }
     }
 }

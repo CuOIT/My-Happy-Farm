@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class FieldController : MonoBehaviour,IField
 {
+    bool isActive = false;
     [SerializeField] List<FieldCell>        fields;
     public List<FieldCell> FieldCells => fields;
 
     [SerializeField] FarmProductTypeData    plantType;
 
-    [SerializeField] FieldBotController bot;
-    [SerializeField] int botCost;
-    [SerializeField] IntData haveBot;
     public void AddCells(List<FieldCell> cells)
     {
         foreach (FieldCell cell in cells)
@@ -20,33 +18,8 @@ public class FieldController : MonoBehaviour,IField
             fields.Add(cell);
             cell.InitPlantType(plantType.Value);
         }
-        //UpdateField();
     }
-    public void OnEnable()
-    {
-        if (haveBot.Value > 0)
-        {
-            bot.gameObject.SetActive(true);
-        }
-        else
-        {
-            bot.gameObject.SetActive(false);
-        }
-    }
-    public int GetBotCost()
-    {
-        if(haveBot.Value>0) return 0;
-        return botCost;
-    }
-    public void Hire()
-    {
-        bot.gameObject.SetActive(true);
-        haveBot.Value = 1; 
-    }
-    public void SetNextCrop(FarmProductType type)
-    {
-        bot.SetPlant(type);
-    }
+
     public void RemoveCells(List<FieldCell> cells)
     {
         foreach(FieldCell cell in cells) { 
@@ -54,7 +27,10 @@ public class FieldController : MonoBehaviour,IField
         }
     }
 
-
+    public bool IsActive()
+    {
+        return fields.Count > 0;
+    }
     public void SetPlantType(FarmProductType type)
     {
         plantType.Value = type;

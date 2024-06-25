@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HaveBot1
   m_EditorClassIdentifier: 
   Name: HaveBot1
-  defaultValue: 0
+  defaultValue: 10000

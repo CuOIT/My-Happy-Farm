@@ -1,23 +1,16 @@
+using _Template.Event;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFieldFarmer : FieldFarmer
 {
-    [SerializeField] FieldUI _fieldUI;
+    [SerializeField] SimpleEvent showFieldUIEvent;
+    [SerializeField] SimpleEvent hideFieldUIEvent;
 
-    public void Hire()
-    {
-        currentField.Hire();
-    }
-    public int GetFieldBotCost()
-    {
-        return currentField.GetBotCost();
-    }
-    public void SetPlantType(FarmProductType type)
-    {
-        currentField.SetNextCrop(type);
-    }
+
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Field"))
@@ -25,8 +18,7 @@ public class PlayerFieldFarmer : FieldFarmer
             currentField = other.GetComponent<IField>();
             if (currentField != null)
             {
-                _fieldUI.InitBotStatus(currentField.GetBotCost());
-                _fieldUI.ShowAction();
+                showFieldUIEvent.RaiseEvent();
             }
         }
     }
@@ -37,7 +29,7 @@ public class PlayerFieldFarmer : FieldFarmer
             currentField = other.GetComponent<IField>();
             if (currentField != null)
             {
-                _fieldUI.UnShow();
+                hideFieldUIEvent.RaiseEvent();
             }
         }
     }

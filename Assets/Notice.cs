@@ -21,6 +21,6 @@ public class Notice : MonoBehaviour
         RectTransform rect = GetComponent<RectTransform>();
         rect.anchoredPosition = Vector3.zero;
         txt.SetText(message);
-        transform.DOMoveY(transform.position.y+length,time).SetEase(Ease.OutCubic);
+        transform.DOMoveY(transform.position.y+length,time).SetEase(Ease.OutQuint);
     }
 }

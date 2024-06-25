@@ -1147,6 +1147,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="KinoBloom.Runtime.csproj">
+      <Project>{812DC063-F77E-E7CE-B003-A20BCBBE45E7}</Project>
+      <Name>KinoBloom.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.PlayerPrefsEditor.Editor.csproj">
       <Project>{F265D9EC-651C-0079-C25B-47DF5E0E4D31}</Project>
       <Name>Unity.PlayerPrefsEditor.Editor</Name>
@@ -1159,9 +1163,25 @@
       <Project>{9B2DFE73-D5F6-F52E-CC75-27A14D843DFF}</Project>
       <Name>Unity.PlayerPrefsEditor.Samples.SampleScene</Name>
     </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro2.Demo.csproj">
+      <Project>{0AFE306E-EE07-D875-9D28-3A132793D576}</Project>
+      <Name>ToonyColorsPro2.Demo</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
       <Project>{806A9405-A288-0320-813B-5F385931AEE5}</Project>
       <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Runtime.csproj">
+      <Project>{2D0A2510-BD2F-7746-28AB-CB7D16C25C85}</Project>
+      <Name>ToonyColorsPro.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{6AFF7AB5-35FD-641B-F340-4C9C009C6F04}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Editor.csproj">
+      <Project>{1CE3006C-C9B6-2AAC-FB30-E4EFE5505AB1}</Project>
+      <Name>ToonyColorsPro.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

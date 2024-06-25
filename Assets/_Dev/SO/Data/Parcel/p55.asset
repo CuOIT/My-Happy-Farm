@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: p55
   m_EditorClassIdentifier: 
   Name: p55
-  defaultValue: 100
+  defaultValue: 40000
   _levelUnlock: 14

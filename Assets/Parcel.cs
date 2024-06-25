@@ -49,6 +49,7 @@ public class Parcel : MonoBehaviour
     }
     public void InitByLevel(int playerLevel)
     {
+        if (parcelInfo == null) return;
         int levelUnlock = parcelInfo.LevelUnlock;
         if (levelUnlock > playerLevel)
         {

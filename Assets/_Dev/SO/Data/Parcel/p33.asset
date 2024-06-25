@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: p33
   m_EditorClassIdentifier: 
   Name: p33
-  defaultValue: 100
+  defaultValue: 3000
   _levelUnlock: 6

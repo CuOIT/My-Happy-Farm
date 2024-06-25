@@ -9,11 +9,7 @@ public class FieldUI : MonoBehaviour
 {
     [SerializeField] GameObject firstAction;
 
-    [SerializeField] TextMeshProUGUI botCostTxt;
-
     [SerializeField] GameObject _seedAction;
-
-    [SerializeField] GameObject _seedBotAction;
 
     private GameObject currentAction;
 
@@ -24,21 +20,12 @@ public class FieldUI : MonoBehaviour
         public Button btn;
     }
     [SerializeField] List<PlantButton> plantButtons;
-
-    [SerializeField] List<PlantButton> plantButtonsForBot;
-    private FarmProductType _type;
     [SerializeField]private PlayerFieldFarmer _farmer;
 
-    public void Awake()
-    {
-        foreach(var plantButton in plantButtons)
-        {
-            plantButton.btn.onClick.AddListener(() => OnClickSetPlantForBot(plantButton.type));
-        }
-    }
+
     public void InitType(FarmProductType type)
     {
-        _type = type;
+        var _type = type;
         bool actived = _type == FarmProductType.NONE;
         foreach(var plantbutton in plantButtons)
         {
@@ -51,18 +38,6 @@ public class FieldUI : MonoBehaviour
         }        
     }
 
-    public void  InitBotStatus(int botCost)
-    {
-        if (botCost > 0)
-        {
-            botCostTxt.transform.parent.gameObject.SetActive(true);
-            botCostTxt.SetText(botCost.ToString());
-        }
-        else
-        {
-            botCostTxt.transform.parent.gameObject.SetActive(false);
-        }
-    }
     public void SetCurrentAction(GameObject action)
     {
         if (currentAction != null)
@@ -80,10 +55,6 @@ public class FieldUI : MonoBehaviour
     public void ShowPlantSeedAction()
     {
         SetCurrentAction(_seedAction);
-    }
-    public void ShowBotPlantSeedAction()
-    {
-        SetCurrentAction(_seedBotAction);
     }
     public void UnShow()
     {
@@ -109,14 +80,5 @@ public class FieldUI : MonoBehaviour
         _farmer.CollectPlant();
     }
 
-    public void OnClickHireAction()
-    {
-        _farmer.Hire();
-        SetCurrentAction(null);
-    }
-    public void OnClickSetPlantForBot(FarmProductType type)
-    {
-        _farmer.SetPlantType(type);
-        SetCurrentAction(null);
-    }
+
 }

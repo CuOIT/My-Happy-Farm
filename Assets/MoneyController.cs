@@ -13,7 +13,6 @@ public class MoneyController : MonoBehaviour
     [SerializeField] List<Image> moneyImages;
     [SerializeField] Transform des;
     private int _money;
-
     void SetTextMoney(int num)
     {
         _money = num;
@@ -46,6 +45,17 @@ public class MoneyController : MonoBehaviour
         PlayAnim();
         int newMoney = num+moneyData.Value; 
         StartCoroutine(SetMoney(newMoney,s1*2));
+    }
+    public void SpendMoney(int num)
+    {
+        int newMoney = moneyData.Value - num;
+        if (newMoney < 0) newMoney = 0;
+        moneyData.Value= newMoney;
+        SetTextMoney(newMoney);
+    }
+    public bool HaveMoney(int num)
+    {
+        return moneyData.Value >=num;
     }
     [SerializeField] float length;
     [Button]

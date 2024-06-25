@@ -29,6 +29,7 @@ namespace Cage
         [SerializeField] int timeToHungry;
 
         List<IAnimal> animals;
+
         void Awake()
         {
            /* if(lastTimeFeed!=null)
@@ -100,6 +101,7 @@ namespace Cage
             lastTimeFeeed.Value = DateTime.Now;
             ShowTime();
             AnimalFeed();
+            
 
         }
 

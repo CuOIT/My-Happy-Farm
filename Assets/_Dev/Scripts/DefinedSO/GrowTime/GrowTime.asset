@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growTimes:
   - type: 1
-    plantDurationInSec: 200
+    plantDurationInSec: 60
   - type: 2
-    plantDurationInSec: 3
+    plantDurationInSec: 40
   - type: 3
-    plantDurationInSec: 2
+    plantDurationInSec: 50
   - type: 4
-    plantDurationInSec: 2
+    plantDurationInSec: 60
   - type: 5
-    plantDurationInSec: 2
+    plantDurationInSec: 50
   - type: 6
-    plantDurationInSec: 2
+    plantDurationInSec: 100

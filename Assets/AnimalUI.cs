@@ -17,7 +17,6 @@ public class AnimalUI : MonoBehaviour
     }
     [SerializeField] List<TypeBtn> types;
     Button currentBtn;
-
     public void Init(ProductNum foodRequire)
     {
         HideBtn();
@@ -40,7 +39,7 @@ public class AnimalUI : MonoBehaviour
         if (animalFarmer.EnoughBarn())
         {
             animalFarmer.Feed();
-            Hide();
+            HideBtn();
         }
         else
         {
@@ -50,10 +49,6 @@ public class AnimalUI : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
-    }
-    public void Hide()
-    {
-        gameObject.SetActive(false);
     }
 }
 

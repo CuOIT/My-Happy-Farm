@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
-public class LockParcel : MonoBehaviour
+public class LockParcel : MonoBehaviour,ILockParcel
 {
     [SerializeField] TextMeshProUGUI moneyNum;
     private ParcelInfoSO moneyUnlock;
@@ -12,6 +13,10 @@ public class LockParcel : MonoBehaviour
     {
         parent = GetComponentInParent<Parcel>();
         moneyUnlock = parent.ParcelInfo;
+        if (moneyUnlock == null)
+        {
+            gameObject.SetActive(false);
+        }else
         SetMoney(moneyUnlock.Value);
     }
     public void SetMoney(int num)
@@ -31,6 +36,11 @@ public class LockParcel : MonoBehaviour
             }
             else
             {
+                if(num<=0)
+                {
+                    num = 0;
+                    BoughtParcel();
+                }
                 moneyNum.SetText(num.ToString());
             }
         }
@@ -76,6 +86,7 @@ public class LockParcel : MonoBehaviour
             }   
         }
     }
+
     public void BoughtParcel()
     {
         parent?.OnBoughtThisParcel();
@@ -89,6 +100,15 @@ public class LockParcel : MonoBehaviour
             StartCoroutine(ReduceNumberOverTime(wallet)); 
         }
     }
+
+    public Vector3 GetPos()
+    {
+        return transform.position; 
+    }
+    public int GetCost()
+    {
+        return moneyUnlock.Value;
+    }
     public void OnTriggerExit(Collider other)
     {
         IWallet wallet = other.GetComponent<IWallet>();
@@ -97,4 +117,11 @@ public class LockParcel : MonoBehaviour
             StopAllCoroutines();
         }
     }
+}
+
+public interface ILockParcel
+{
+    Vector3 GetPos();
+    int GetCost();
+    void SetMoney(int num);
 }

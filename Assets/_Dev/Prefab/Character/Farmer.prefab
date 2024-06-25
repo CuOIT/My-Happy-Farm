@@ -785,7 +785,8 @@ MonoBehaviour:
   _zoneController: {fileID: 5468007513326702802}
   _collectProductEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
   _collectProductGOEvent: {fileID: 11400000, guid: 91589753f8f0cde44bf437141f139cdf, type: 2}
-  _fieldUI: {fileID: 0}
+  showFieldUIEvent: {fileID: 11400000, guid: 52b6105ddf484994da372a7874dc6565, type: 2}
+  hideFieldUIEvent: {fileID: 11400000, guid: 76aee391c67a2c6409316a968d92d460, type: 2}
 --- !u!1 &719541164297516876
 GameObject:
   m_ObjectHideFlags: 0
