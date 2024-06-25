@@ -62936,7 +62936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 719541163888128011, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000076293945
+      value: 0.000008583069
       objectReference: {fileID: 0}
     - target: {fileID: 719541163888128011, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63076,19 +63076,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 719541164524270924, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000014901159
+      value: -0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 719541164524270924, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000074505797
+      value: -0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 719541164524270924, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.80157226
+      value: 0.8015723
       objectReference: {fileID: 0}
     - target: {fileID: 719541164524270924, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5978978
+      value: -0.5978979
       objectReference: {fileID: 0}
     - target: {fileID: 719541164524270925, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_Layer
@@ -63137,6 +63137,10 @@ PrefabInstance:
     - target: {fileID: 2870526251198545063, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489595783691231109, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5396426008812937673, guid: ac9ce5245b971f94f8cc8ee0af438576, type: 3}
       propertyPath: m_BlockingMask.m_Bits
