@@ -7,13 +7,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class FieldBotController : FieldFarmer
+public class BotFieldFarmer : FieldFarmer
 {
-    [SerializeField] FieldController fieldController;
     private BotMovement botMovement;
-    [SerializeField] private float checkInterval; // Time in seconds between each check
-
-    private List<FieldCell> actionQueue = new List<FieldCell>();
+    [SerializeField] private float checkInterval; // Time in seconds between each chec
     private bool isIdle = false;
     [SerializeField] DateTimeData lastTime;
     [SerializeField] int performPerHour;
@@ -26,7 +23,6 @@ public class FieldBotController : FieldFarmer
     private void Start()
     {
         botMovement = GetComponent<BotMovement>();
-        SetCurrentField(fieldController);
         TimeSpan timeSpan = DateTime.Now - lastTime.Value;
         long hour = (long)timeSpan.TotalHours;
         long numOfProduct = performPerHour * hour;
@@ -42,17 +38,20 @@ public class FieldBotController : FieldFarmer
         while (true)
         {
             yield return new WaitForSeconds(checkInterval);
-            yield return StartCoroutine(TakeAction());
+            yield return StartCoroutine(GetNextAction());
         }
     }
-
-    private IEnumerator TakeAction()
+    private IEnumerator GetNextAction()
     {
         if(_productData.GetCapacity()>maxContain)
         {
             yield return StartCoroutine(GoToBarn());
         }
-        EnqueueActionsBasedOnFieldState();
+        List<FieldCell> actionQueue = currentField.FieldCells
+            .Where(cell => cell.GetState() != FieldCell.WATER) // Filter out empty cells
+            .OrderBy(cell => cell.GetState()) // Sort by priority
+            .ThenBy(cell => GetDistance(cell.transform))
+            .ToList();
         if (actionQueue.Count == 0)
         {
             if (!isIdle)
@@ -65,7 +64,6 @@ public class FieldBotController : FieldFarmer
         actionQueue.RemoveAt(0);
         yield return StartCoroutine(MoveAndAct(nextCell)); 
     }
-
     private IEnumerator GoToBarn()
     {
         _animator.SetBool("walk", true);
@@ -86,22 +84,10 @@ public class FieldBotController : FieldFarmer
         _animator.SetBool("walk", false);
 
     }
-
-    private void EnqueueActionsBasedOnFieldState()
-    {
-        actionQueue.Clear(); // Clear previous actions to avoid duplicates
-        actionQueue = fieldController.FieldCells
-            .Where(cell => cell.GetState() != FieldCell.WATER) // Filter out empty cells
-            .OrderBy(cell => cell.GetState()) // Sort by priority
-            .ThenBy(cell => GetDistance(cell.transform))
-            .ToList();
-    }
-
     private float GetDistance(Transform target)
     {
         return Vector3.Distance(transform.position, target.position);   
     }
-
     private IEnumerator MoveAndAct(FieldCell cell)
     {
         _animator.SetBool("walk",true);
@@ -134,14 +120,18 @@ public class FieldBotController : FieldFarmer
     {
         defaultType = type;
     }
-
     public bool HaveFieldActive()
     {
-        return fieldController.IsActive();
+        return currentField.IsActive();
     }
-    public void OnTriggerEnter(Collider other)
+/*    private void EnqueueActionsBasedOnFieldState()
     {
-        
-    }
+        actionQueue.Clear(); // Clear previous actions to avoid duplicates
+        actionQueue = currentField.FieldCells
+            .Where(cell => cell.GetState() != FieldCell.WATER) // Filter out empty cells
+            .OrderBy(cell => cell.GetState()) // Sort by priority
+            .ThenBy(cell => GetDistance(cell.transform))
+            .ToList();
+    }*/
 }
 

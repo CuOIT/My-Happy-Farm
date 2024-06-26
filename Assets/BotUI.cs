@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class BotUI : MonoBehaviour
 {
     [SerializeField] IntData botCost;
-    [SerializeField] FieldBotController botController;
+    [SerializeField] BotFieldFarmer botController;
     [SerializeField] GameObject UnActive;
     [SerializeField] Button HireBtn;
     [SerializeField] TextMeshProUGUI costTxt;

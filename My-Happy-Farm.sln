@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{8345AB7A-738F-BCEC-0464-31F7B1A1981F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{A5175C64-BA9F-D752-E2FC-54F433637B1C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro.Editor", "ToonyColorsPro.Editor.csproj", "{1CE3006C-C9B6-2AAC-FB30-E4EFE5505AB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro2.Demo", "ToonyColorsPro2.Demo.csproj", "{0AFE306E-EE07-D875-9D28-3A132793D576}"
@@ -33,6 +35,10 @@ Global
 		{8345AB7A-738F-BCEC-0464-31F7B1A1981F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8345AB7A-738F-BCEC-0464-31F7B1A1981F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8345AB7A-738F-BCEC-0464-31F7B1A1981F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5175C64-BA9F-D752-E2FC-54F433637B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5175C64-BA9F-D752-E2FC-54F433637B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5175C64-BA9F-D752-E2FC-54F433637B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5175C64-BA9F-D752-E2FC-54F433637B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CE3006C-C9B6-2AAC-FB30-E4EFE5505AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CE3006C-C9B6-2AAC-FB30-E4EFE5505AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CE3006C-C9B6-2AAC-FB30-E4EFE5505AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU

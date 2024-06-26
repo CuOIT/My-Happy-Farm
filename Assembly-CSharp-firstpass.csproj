@@ -1175,13 +1175,13 @@
       <Project>{2D0A2510-BD2F-7746-28AB-CB7D16C25C85}</Project>
       <Name>ToonyColorsPro.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
-      <Project>{6AFF7AB5-35FD-641B-F340-4C9C009C6F04}</Project>
-      <Name>ToonyColorsPro.Demo.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="ToonyColorsPro.Editor.csproj">
       <Project>{1CE3006C-C9B6-2AAC-FB30-E4EFE5505AB1}</Project>
       <Name>ToonyColorsPro.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{6AFF7AB5-35FD-641B-F340-4C9C009C6F04}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

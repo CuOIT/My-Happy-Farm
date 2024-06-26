@@ -15,7 +15,7 @@ public class PlayerFieldFarmer : FieldFarmer
     {
         if (other.CompareTag("Field"))
         {
-            currentField = other.GetComponent<IField>();
+            currentField = other.GetComponent<FieldController>();
             if (currentField != null)
             {
                 showFieldUIEvent.RaiseEvent();
@@ -26,7 +26,7 @@ public class PlayerFieldFarmer : FieldFarmer
     {
         if (other.CompareTag("Field"))
         {
-            currentField = other.GetComponent<IField>();
+            currentField = other.GetComponent<FieldController>();
             if (currentField != null)
             {
                 hideFieldUIEvent.RaiseEvent();

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CookEvent
   m_EditorClassIdentifier: 
   testValueOnly:
-    type: 0
-    num: 0
+    type: 1
+    num: 11

@@ -68,7 +68,7 @@ public class Wallet : MonoBehaviour
         bool finished = false;
         int changeMoney;
         int nextNum;
-        int maxCoin = 5;
+        int maxCoin = 2;
         int coin = 0;
         while (!finished)
         {

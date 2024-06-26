@@ -12,7 +12,7 @@ public class FieldFarmer : MonoBehaviour,IHarvest
     [SerializeField] protected ProductNumEvent _collectProductEvent;
     [SerializeField] protected GameObjectEvent _collectProductGOEvent;
 
-    protected IField currentField;
+    [SerializeField]protected FieldController currentField;
     public void Awake()
     {
         Init();
@@ -70,7 +70,6 @@ public class FieldFarmer : MonoBehaviour,IHarvest
     {
         currentField.SetPlantType(type);
     }
-
     public FarmProductType GetFieldType()
     {
         return currentField.GetPlantType();

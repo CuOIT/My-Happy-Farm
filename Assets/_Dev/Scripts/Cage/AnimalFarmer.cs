@@ -11,8 +11,7 @@ public class AnimalFarmer : MonoBehaviour
     [SerializeField] ProductNumEvent ShowUIAnimalEvent;
     [SerializeField] SimpleEvent UnShowEvent;
     [SerializeField] ProductNumEvent feedEvent;
-
-    
+    [SerializeField] ProductNumEvent collectProductEvent;
     public void Feed()
     {
         if(currentCage == null) return;
@@ -22,6 +21,7 @@ public class AnimalFarmer : MonoBehaviour
         currentCage.Feed();
         ProductNum productNum = currentCage.GetProductType();
         productData.Add(productNum);
+        collectProductEvent.RaiseEvent(productNum);
         for(int i = 0; i < productNum.num; i++)
         {
             GameObject go = GameManager.Instance.pooler.SpawnFromPool(productNum.type.ToString(),currentCage.GetPos(),Quaternion.identity);
@@ -29,7 +29,7 @@ public class AnimalFarmer : MonoBehaviour
         }
     }
 
-    public bool EnoughBarn()
+    public bool EnoughBran()
     {
         ProductNum foodRequire = currentCage.GetFoodType();
         return foodRequire.num <= productData.Value[foodRequire.type];

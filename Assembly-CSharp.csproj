@@ -78,7 +78,6 @@
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\LevelInfo\LevelEXPInfos.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\IEvent.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\IEventListener.cs" />
-    <Compile Include="Assets\_Dev\Scripts\Bot\FieldBotController.cs" />
     <Compile Include="Assets\MobileDepthWater\Scripts\Water\WaterPropertyBlockSetter.cs" />
     <Compile Include="Assets\AnimalUI.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\ProductImage\ProductImages.cs" />
@@ -115,6 +114,7 @@
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Data\ListStringData.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Data\FarmProductTypeData.cs" />
     <Compile Include="Assets\ProductUIDrop.cs" />
+    <Compile Include="Assets\_Dev\Scripts\Bot\BotFieldFarmer.cs" />
     <Compile Include="Assets\WaterCan.cs" />
     <Compile Include="Assets\_Dev\Scripts\Cage\AnimalCage.cs" />
     <Compile Include="Assets\_Dev\Scripts\Human\PlayerController.cs" />
@@ -207,6 +207,7 @@
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders\Standard PBS\TCP2_Standard PBS Outline.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders\Legacy\Include\TCP2_Outline_Behind_SM2.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\BuildReport\CustomBuildScriptExample.txt" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shader Templates 2\Modules\Module_VertexDisplacement.txt" />
     <None Include="Assets\P_WaterShader\Shader\Water_Ocean_01.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shader Templates 2\Modules\Module_Outline.txt" />
@@ -215,6 +216,7 @@
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders Generated\Examples\SG2\Stylized Water.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shader Templates 2\Modules\Module_Terrain.txt" />
     <None Include="Assets\P_WaterShader\Shader\Water_Ocean_06.shader" />
+    <None Include="Assets\___www.unityassetcollection.com___.txt" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders Generated\Examples\SG2\Detail Texture Simple.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders\Standard PBS\TCP2_PBS_Main.cginc" />
     <None Include="Assets\MobileDepthWater\Shaders\WaterTwoSide\Height\DiffuseColorHeightWaterTwoSide.shader" />
@@ -237,6 +239,7 @@
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders\Standard PBS\TCP2_Standard PBS Outline (Specular).shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders Generated\Examples\PBS\Sketch.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shader Templates 2\Modules\Module_Texture Blending.txt" />
+    <None Include="Assets\BuildReport\README.txt" />
     <None Include="Assets\MobileDepthWater\Shaders\WaterOpaque\Height\DiffuseHeightWater.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shader Templates 2\Modules\Module_ShadowHSV.txt" />
     <None Include="Assets\P_WaterShader\Shader\Water_Ocean_05.shader" />
@@ -274,6 +277,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders Generated\Examples\PBS\Blended Outline.shader" />
+    <None Include="Assets\BuildReport\license.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders\Standard PBS\TCP2_Standard PBS.shader" />
@@ -281,6 +285,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders\Legacy\Include\TCP2_Outline.shader" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders Generated\Examples\Default\Subsurface Scattering.shader" />
+    <None Include="Assets\BuildReport\VERSION.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shader Templates 2\Modules\Module_Vertical Fog.txt" />
     <None Include="Assets\JMO Assets\Toony Colors Pro\Shaders Generated\Examples\Water\Water WindWaker2.shader" />
@@ -1423,13 +1428,13 @@
       <Project>{2D0A2510-BD2F-7746-28AB-CB7D16C25C85}</Project>
       <Name>ToonyColorsPro.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
-      <Project>{6AFF7AB5-35FD-641B-F340-4C9C009C6F04}</Project>
-      <Name>ToonyColorsPro.Demo.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="ToonyColorsPro.Editor.csproj">
       <Project>{1CE3006C-C9B6-2AAC-FB30-E4EFE5505AB1}</Project>
       <Name>ToonyColorsPro.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{6AFF7AB5-35FD-641B-F340-4C9C009C6F04}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

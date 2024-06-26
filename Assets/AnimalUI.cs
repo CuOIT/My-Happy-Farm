@@ -36,7 +36,7 @@ public class AnimalUI : MonoBehaviour
     }
     public void OnClickFeed()
     {
-        if (animalFarmer.EnoughBarn())
+        if (animalFarmer.EnoughBran())
         {
             animalFarmer.Feed();
             HideBtn();
