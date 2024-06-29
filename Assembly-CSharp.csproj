@@ -84,7 +84,6 @@
     <Compile Include="Assets\MobileDepthWater\Scripts\TouchRotator.cs" />
     <Compile Include="Assets\IWallet.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\GrowTime\GrowTime.cs" />
-    <Compile Include="Assets\_Template\SO\Event\Script\BaseEventListener.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\GameObjectEventListener.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Recipe\Recipe.cs" />
     <Compile Include="Assets\FeedEXP.cs" />
@@ -106,6 +105,7 @@
     <Compile Include="Assets\Storage.cs" />
     <Compile Include="Assets\SliderPopUp.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\_CustomEvent\PlantTypeAndNumEvent.cs" />
+    <Compile Include="Assets\_Template\SO\Event\Script\BaseEvent.cs" />
     <Compile Include="Assets\LeaderboardUI.cs" />
     <Compile Include="Assets\_Template\Scipt\Singleton\DataSystem.cs" />
     <Compile Include="Assets\ProductDrop.cs" />
@@ -130,6 +130,7 @@
     <Compile Include="Assets\_Dev\Scripts\Bot\BotMovement.cs" />
     <Compile Include="Assets\ShowBot.cs" />
     <Compile Include="Assets\ConfirmSell.cs" />
+    <Compile Include="Assets\_Template\SO\Event\Script\EventListener.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\IntEventListener.cs" />
     <Compile Include="Assets\MobileDepthWater\Scripts\Water\WaterMaterialSwitcher.cs" />
     <Compile Include="Assets\_Template\Scipt\Data\LocalData.cs" />
@@ -162,7 +163,6 @@
     <Compile Include="Assets\_Dev\Scripts\Cage\HungryState.cs" />
     <Compile Include="Assets\_Dev\Scripts\DailyMission\Mission.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\CellStatesData.cs" />
-    <Compile Include="Assets\_Template\SO\Event\Script\BaseSOEvent.cs" />
     <Compile Include="Assets\ButtonSound.cs" />
     <Compile Include="Assets\EXPUI.cs" />
     <Compile Include="Assets\_Template\SO\Event\Script\Vector3Event.cs" />

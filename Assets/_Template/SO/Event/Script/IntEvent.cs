@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="NewIntEvent",menuName ="Event/IntEvent")]
-public class IntEvent : BaseSOEvent<int>
+public class IntEvent : BaseEvent<int>
 {
 }
 #if UNITY_EDITOR

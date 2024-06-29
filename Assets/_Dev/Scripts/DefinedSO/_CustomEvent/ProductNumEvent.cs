@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets._Dev.SO._CustomEvent
 {
     [CreateAssetMenu(fileName="NewProductNumEvent",menuName ="Event/ProductNumEvent")]
-    public class ProductNumEvent : BaseSOEvent<ProductNum>
+    public class ProductNumEvent : BaseEvent<ProductNum>
     {
 
     }

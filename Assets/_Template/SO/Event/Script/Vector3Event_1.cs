@@ -6,7 +6,7 @@ using UnityEngine;
 namespace _Template.Event
 {
     [CreateAssetMenu(fileName ="NewVector3Event",menuName ="Event/Vector3Event")]
-public class Vector3Event : BaseSOEvent<Vector3>
+public class Vector3Event : BaseEvent<Vector3>
 {
 }
 #if UNITY_EDITOR

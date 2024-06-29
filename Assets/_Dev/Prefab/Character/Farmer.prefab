@@ -754,8 +754,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productData: {fileID: 11400000, guid: bde0aa38abaca7245b53d8bc208fcc66, type: 2}
-  animalUI: {fileID: 0}
   collectGOEvent: {fileID: 11400000, guid: 91589753f8f0cde44bf437141f139cdf, type: 2}
+  ShowUIAnimalEvent: {fileID: 11400000, guid: 24034f31923ae1f41b618462489cb9aa, type: 2}
+  UnShowEvent: {fileID: 11400000, guid: 3514467866c063f488e8b628fba487a6, type: 2}
+  feedEvent: {fileID: 11400000, guid: 6a72e6956963f2b4c9811a9577a21b4e, type: 2}
+  collectProductEvent: {fileID: 0}
 --- !u!114 &2491176063824878825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,6 +788,7 @@ MonoBehaviour:
   _zoneController: {fileID: 5468007513326702802}
   _collectProductEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
   _collectProductGOEvent: {fileID: 11400000, guid: 91589753f8f0cde44bf437141f139cdf, type: 2}
+  currentField: {fileID: 0}
   showFieldUIEvent: {fileID: 11400000, guid: 52b6105ddf484994da372a7874dc6565, type: 2}
   hideFieldUIEvent: {fileID: 11400000, guid: 76aee391c67a2c6409316a968d92d460, type: 2}
 --- !u!1 &719541164297516876

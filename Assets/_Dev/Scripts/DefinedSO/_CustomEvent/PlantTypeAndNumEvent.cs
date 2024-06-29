@@ -5,12 +5,12 @@ using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewPlantTypeEvent", menuName = "Event/PlantTypeEvent")]
-public class PlantTypeAndNumEvent : BaseSOEvent<FarmProductType,int>
+public class PlantTypeAndNumEvent : BaseEvent<FarmProductType,int>
 {
 }
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(BaseSOEvent<>), true)]
+[CustomEditor(typeof(BaseEvent<>), true)]
 public class PlantTypeAndNumEventEditor : Editor
 {
     PlantTypeAndNumEvent soEvent;

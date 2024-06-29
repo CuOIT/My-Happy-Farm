@@ -8,7 +8,7 @@ namespace _Template.Event
     [CreateAssetMenu(fileName ="NewSimpleEvent",menuName ="Event/SimpleEvent")]
     
     
-    public class SimpleEvent : BaseSOEvent
+    public class SimpleEvent : BaseEvent
     {
        
     }

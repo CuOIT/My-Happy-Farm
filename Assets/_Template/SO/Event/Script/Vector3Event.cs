@@ -5,11 +5,11 @@ using UnityEditor;
 using UnityEngine;
 [CreateAssetMenu(fileName = "NewVector3Event", menuName = "Event/Vector3Event")]
 
-public class Vector3Event : BaseSOEvent<Vector3>
+public class Vector3Event : BaseEvent<Vector3>
 {
 }
 #if UNITY_EDITOR
-[CustomEditor(typeof(BaseSOEvent<>), true)]
+[CustomEditor(typeof(BaseEvent<>), true)]
 public class Vector3EventEditor : Editor
 {
     Vector3Event soEvent;

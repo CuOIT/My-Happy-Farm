@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c8d63752eef4f43924895ee47281bc, type: 3}
   m_Name: Milk 2
   m_EditorClassIdentifier: 
-  description: Collect 2 milk buckets
+  description: Feed chickens 3 times
   currentProgress: 0
   targetProgress: 2
   reward: 5000
   completeEvent: {fileID: 11400000, guid: 937d13c5322ba3a4baa0f8e2d8bf9a72, type: 2}
+  collected: 0
   productEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
   target:
     type: 11

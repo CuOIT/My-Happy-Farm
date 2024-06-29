@@ -3,7 +3,7 @@
 
 namespace Assets._Dev.SO._CustomEvent
 {
-    public class ProductNumEventListener : BaseEventListener<ProductNum>
+    public class ProductNumEventListener : EventListener<ProductNum>
     {
     }
 }
