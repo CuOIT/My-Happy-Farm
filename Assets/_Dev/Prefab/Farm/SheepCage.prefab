@@ -501,7 +501,7 @@ MonoBehaviour:
     type: 8
     num: 1
   timeToHungry: 7200
-  feedEvent: {fileID: 11400000, guid: 6a72e6956963f2b4c9811a9577a21b4e, type: 2}
+  clip: {fileID: 8300000, guid: 46e3dcb9a5eec92438bdcbb7a8eedcc8, type: 3}
 --- !u!65 &173551769911417801
 BoxCollider:
   m_ObjectHideFlags: 0

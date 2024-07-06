@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ShowUIAnimal
   m_EditorClassIdentifier: 
   testValueOnly:
-    type: 0
+    type: 8
     num: 0

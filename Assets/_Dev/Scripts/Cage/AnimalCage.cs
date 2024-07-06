@@ -28,7 +28,8 @@ namespace Cage
         [SerializeField] ProductNum foodRequire;
         [SerializeField] int timeToHungry;
 
-        List<IAnimal> animals;
+        [SerializeField] AudioClip clip;
+        List<Animal> animals;
 
         void Awake()
         {
@@ -119,7 +120,7 @@ namespace Cage
         {
             return productNum;
         }
-
+        private bool talk = false;
         public void OnHumanComing()
         {
             if (isHungry)
@@ -130,8 +131,18 @@ namespace Cage
             {
                 AnimalShowGreet();
             }
+            if (!talk)
+            {
+                AudioController.Instance.PlaySoundEffect(clip);
+                talk = true;
+                Invoke(nameof(Talked), 1);
+            }
         }
        
+        private void Talked()
+        {
+            talk = false;
+        }
         public Vector3 GetPos()
         {
             return transform.position;
