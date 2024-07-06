@@ -36,7 +36,7 @@ namespace Cage
            /* if(lastTimeFeed!=null)
             lastTime = DateTime.ParseExact(lastTimeFeed.Value, FORMAT,CultureInfo.InvariantCulture);*/
             //animalUI = animalUIGO.GetComponent<IAnimalUI>();
-            animals=GetComponentsInChildren<IAnimal>().ToList();
+            animals=GetComponentsInChildren<Animal>().ToList();
         }
         void Update()
         {
