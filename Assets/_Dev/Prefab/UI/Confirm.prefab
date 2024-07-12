@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 1391273602305155766}
   - component: {fileID: 7374393154359299985}
   - component: {fileID: 5358299043496331320}
+  - component: {fileID: 6492208606618896541}
   m_Layer: 5
   m_Name: Cancel
   m_TagString: Untagged
@@ -525,7 +526,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7374393154359299985}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6492208606618896541}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlayBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6492208606618896541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710850819369720405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08446fe51b4b38640931aaa17394d7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: f6409af1abdc97843859fecc00166e35, type: 3}
 --- !u!1 &3059008761608636303
 GameObject:
   m_ObjectHideFlags: 0

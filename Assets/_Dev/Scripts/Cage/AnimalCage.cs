@@ -31,12 +31,26 @@ namespace Cage
         [SerializeField] AudioClip clip;
         List<Animal> animals;
 
+        bool notTalk;
+        void Talkable()
+        {
+            notTalk = false;
+        }
         void Awake()
         {
            /* if(lastTimeFeed!=null)
             lastTime = DateTime.ParseExact(lastTimeFeed.Value, FORMAT,CultureInfo.InvariantCulture);*/
             //animalUI = animalUIGO.GetComponent<IAnimalUI>();
             animals=GetComponentsInChildren<Animal>().ToList();
+            notTalk = true;
+            Invoke(nameof(Talkable), 1);
+
+
+        }
+        void OnEnable()
+        {
+            if(!notTalk)
+            AudioController.Instance.PlaySoundEffect(clip);
         }
         void Update()
         {

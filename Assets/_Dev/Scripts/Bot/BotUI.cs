@@ -56,6 +56,7 @@ public class BotUI : MonoBehaviour
     {
         if (GameManager.Instance.moneyController.HaveMoney(botCost.Value))
         {
+            GameManager.Instance.moneyController.SpendMoney(botCost.Value);
             botCost.Value = 0;
             UpdateUI();
             hireEvent.RaiseEvent();

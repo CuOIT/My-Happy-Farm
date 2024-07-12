@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4430619367243909}
   - component: {fileID: 135256962523225087}
   - component: {fileID: 8522965914418093517}
+  - component: {fileID: 7474620285933421576}
   m_Layer: 8
   m_Name: FieldCell
   m_TagString: Untagged
@@ -87,8 +88,26 @@ MonoBehaviour:
     plantSize: {fileID: 253173439337078667}
   - type: 4
     plantSize: {fileID: 7221391699530682584}
+  sfx: {fileID: 7474620285933421576}
   growTime: {fileID: 11400000, guid: 362fb3c494c58914fb2fb16f3602216b, type: 2}
   part: {fileID: 198004484958930999}
+--- !u!114 &7474620285933421576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007203975971277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669d7e797a5dad249a033888662dd641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxs:
+  - {fileID: 8300000, guid: 601b535bb9f29c444b2224933d19246f, type: 3}
+  - {fileID: 8300000, guid: a2eceefe20e9aa843aeb80692155cfd9, type: 3}
+  - {fileID: 8300000, guid: 6f0114374167ac84a9a835a1204c3d32, type: 3}
+  - {fileID: 8300000, guid: b1588bc7b8f072a43aba71c046fe846a, type: 3}
 --- !u!1 &1048662404290095
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class Container : BaseContainer
 
     [SerializeField]protected Button sendToTargetBtn;
     [SerializeField]protected Button sellBtn;
+    [SerializeField] AudioClip sellSfx;
     public override void GetAllProduct()
     {
         mapProductInfo = new();
@@ -112,6 +113,7 @@ public class Container : BaseContainer
     }
     public void Sell(ProductNum productNum)
     {
+        AudioController.Instance.PlaySoundEffect(sellSfx);
         ProductInfo info = productInfos.GetProductInfoOfType(productNum.type);
         Dictionary<FarmProductType, int> newValue = productData.Value;
         newValue[productNum.type] -= productNum.num;

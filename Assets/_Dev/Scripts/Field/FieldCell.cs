@@ -25,7 +25,7 @@ public class FieldCell : MonoBehaviour
     private PlantSize               _plantSize;
 
     [SerializeField]List<PlantInfo> plantInfos;
-
+    [SerializeField] SFXSupport sfx;
     public DateTime start;
     [Serializable]
     private struct PlantInfo
@@ -154,6 +154,7 @@ public class FieldCell : MonoBehaviour
         if(_state != COLLECT) return;
         SetState(NONE);
         int num = 1;
+        sfx.PlaySound();
         GameObject product= GameManager.Instance.pooler.SpawnFromPool(type.ToString(), transform.position, Quaternion.identity);
         ProductNum productNum  = new ProductNum(type, num);
         farmer?.Harvest(product,productNum);

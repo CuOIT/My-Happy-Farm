@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CollectProductNum
   m_EditorClassIdentifier: 
   testValueOnly:
-    type: 1
-    num: 11
+    type: 14
+    num: 1

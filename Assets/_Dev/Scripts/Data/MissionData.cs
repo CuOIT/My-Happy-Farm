@@ -11,7 +11,7 @@ public class MissionData : LocalData<DateTime>
 {
     [SerializeField] int missionNumADay;
     [SerializeField] List<Mission> missions;
-    [SerializeField] List<Mission> todayMissions;
+    [SerializeField] List< Mission> todayMissions;
     public List<Mission> TodayMissions => todayMissions;
 
     [Button]
@@ -55,6 +55,10 @@ public class MissionData : LocalData<DateTime>
             temp[rand].ResetProgress();
             temp.RemoveAt(rand);
             if (temp.Count == 0) return;
+        }
+        foreach(Mission mission in temp)
+        {
+            mission.UnActive();
         }
     }
 }

@@ -42,7 +42,8 @@ public class AnimalFarmer : MonoBehaviour
             if(currentCage != null)
             {
                 currentCage.OnHumanComing();
-                ShowUIAnimalEvent.RaiseEvent(currentCage.GetFoodType());
+                if(currentCage.IsHungry())
+                    ShowUIAnimalEvent.RaiseEvent(currentCage.GetFoodType());
             }
         }
     }

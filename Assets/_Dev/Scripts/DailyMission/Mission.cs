@@ -10,7 +10,7 @@ public class Mission : ScriptableObject
     public int currentProgress;
     public int targetProgress;
     public int reward;
-
+    public bool active;
     public event Action missionChange;
     public SimpleEvent completeEvent;
 
@@ -18,6 +18,7 @@ public class Mission : ScriptableObject
 
     public virtual void IncrementProgress(int num)
     {
+        if (!active) return;
         if (collected) return;
         missionChange?.Invoke();
         currentProgress+=num;
@@ -30,10 +31,15 @@ public class Mission : ScriptableObject
 
     public virtual void ResetProgress()
     {
+        active = true;
         currentProgress = 0;
         collected = false;
     }
 
+    public void UnActive()
+    {
+        active = false;
+    }
     public bool IsDone()
     {
         return currentProgress >= targetProgress;

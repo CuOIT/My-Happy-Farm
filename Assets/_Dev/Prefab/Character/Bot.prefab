@@ -12511,6 +12511,7 @@ GameObject:
   - component: {fileID: 5106471244588078541}
   - component: {fileID: 6729577225677345863}
   - component: {fileID: 1509071018194026754}
+  - component: {fileID: 6350412327597272510}
   m_Layer: 0
   m_Name: Bot
   m_TagString: Untagged
@@ -12585,8 +12586,8 @@ MonoBehaviour:
   _productData: {fileID: 0}
   _zoneController: {fileID: 8381182582044968782}
   _collectProductEvent: {fileID: 0}
-  _collectProductGOEvent: {fileID: 0}
-  fieldController: {fileID: 0}
+  _collectProductGOEvent: {fileID: 11400000, guid: c7e42ff470bf4df4887d06a0609095a4, type: 2}
+  currentField: {fileID: 0}
   checkInterval: 0.1
   lastTime: {fileID: 0}
   performPerHour: 100
@@ -12670,6 +12671,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6350412327597272510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704570797427038750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cc3cb4398af6848a66e9916907905e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: {fileID: 0}
+  water: {fileID: 0}
+  collect: {fileID: 0}
 --- !u!1 &1777414294322492833
 GameObject:
   m_ObjectHideFlags: 0

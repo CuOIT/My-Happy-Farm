@@ -7,6 +7,7 @@ public class Wallet : MonoBehaviour
 {
     private MoneyController wallet;
     List<Coroutine> cor;
+    [SerializeField] AudioClip clip;
     private void Start()
     {
         wallet = GameManager.Instance.moneyController;
@@ -22,7 +23,7 @@ public class Wallet : MonoBehaviour
         Vector3 midPoint = (start + end) / 2 + Vector3.up * 2; // Create a midpoint for the arc
 
         while (time < duration)
-        {
+        {   
             time += Time.deltaTime;
             float t = time / duration;
 
@@ -52,13 +53,14 @@ public class Wallet : MonoBehaviour
         ILockParcel lockParcel = other.GetComponent<ILockParcel>();
         if (lockParcel != null)
         {
+            AudioController.Instance.soundEffect.pitch = 1;
             for (int i = cor.Count-1; i >=0; i--) {
                 StopCoroutine(cor[i]);
                 cor.RemoveAt(i);
             }
         }
     }
-
+    [SerializeField] int maxCoin;
     IEnumerator SpendMoneyToUnlock(ILockParcel lockParcel)
     {
         int startNum = lockParcel.GetCost();
@@ -68,7 +70,6 @@ public class Wallet : MonoBehaviour
         bool finished = false;
         int changeMoney;
         int nextNum;
-        int maxCoin = 2;
         int coin = 0;
         while (!finished)
         {
@@ -87,6 +88,8 @@ public class Wallet : MonoBehaviour
                 lockParcel.SetMoney(currentNum);
                 if (coin == 0)
                 {
+                    AudioController.Instance.soundEffect.pitch = 1 + t;
+                    AudioController.Instance.PlaySoundEffect(clip);
                     StartCoroutine(PlayAnimCoin(transform.position, lockParcel.GetPos()));
                 }
                 coin = (coin + 1) % maxCoin;
@@ -100,5 +103,6 @@ public class Wallet : MonoBehaviour
             }
             yield return null;
         }
+        AudioController.Instance.soundEffect.pitch = 1;
     }
 }

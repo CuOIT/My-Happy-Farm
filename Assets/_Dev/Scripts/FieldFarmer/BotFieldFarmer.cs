@@ -15,7 +15,7 @@ public class BotFieldFarmer : FieldFarmer
     [SerializeField] DateTimeData lastTime;
     [SerializeField] int performPerHour;
     [SerializeField] int maxContain;
-    [SerializeField] FarmProductType defaultType;
+    [SerializeField] FarmProductTypeData defaultType;
     //[SerializeField] FieldFarmer farmer;
     [SerializeField] BarnCollector barn;
     [SerializeField] GameObject Info;
@@ -27,9 +27,9 @@ public class BotFieldFarmer : FieldFarmer
         long hour = (long)timeSpan.TotalHours;
         long numOfProduct = performPerHour * hour;
         numOfProduct = (long)Mathf.Clamp(numOfProduct, 0, maxContain);   
-        if (defaultType != FarmProductType.NONE)
+        if (defaultType.Value != FarmProductType.NONE)
         {
-            Harvest(null,new ProductNum(defaultType,(int)numOfProduct));
+            Harvest(null,new ProductNum(defaultType.Value,(int)numOfProduct));
         }
         StartCoroutine(FieldCheckRoutine());
     }
@@ -52,6 +52,10 @@ public class BotFieldFarmer : FieldFarmer
             .OrderBy(cell => cell.GetState()) // Sort by priority
             .ThenBy(cell => GetDistance(cell.transform))
             .ToList();
+        if(defaultType.Value !=currentField.GetPlantType() && currentField.GetPlantType()!=FarmProductType.NONE)
+        {
+            actionQueue.RemoveAll(cell => cell.GetState() == FieldCell.NONE);
+        }
         if (actionQueue.Count == 0)
         {
             if (!isIdle)
@@ -82,6 +86,7 @@ public class BotFieldFarmer : FieldFarmer
     {
         isIdle = true;
         _animator.SetBool("walk", false);
+        LeaveField();
 
     }
     private float GetDistance(Transform target)
@@ -105,7 +110,7 @@ public class BotFieldFarmer : FieldFarmer
         switch (state)
         {
             case FieldCell.NONE:
-                GrowPlant(defaultType);
+                    GrowPlant(defaultType.Value);
                 break;
             case FieldCell.GROW:
                 WaterPlant();
@@ -118,7 +123,7 @@ public class BotFieldFarmer : FieldFarmer
     }
     public void SetPlant(FarmProductType type)
     {
-        defaultType = type;
+        defaultType.Value = type;
     }
     public bool HaveFieldActive()
     {

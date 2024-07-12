@@ -10,16 +10,16 @@ public class SFXFarmer : MonoBehaviour
 
     public void SeedSFX()
     {
-        seed.PlaySound();
+        seed?.PlaySound();
     }
 
     public void WaterSFX()
     {
-        water.PlaySound();
+        water?.PlaySound();
     }
 
     public void CollectSFX()
     {
-        collect.PlaySound();
+        collect?.PlaySound();
     }
 }

@@ -92,6 +92,7 @@
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\GrowTime\GrowTime.cs" />
     <Compile Include="Assets\_Dev\Scripts\_Template\SO\RealtimeData\RealtimeData.cs" />
     <Compile Include="Assets\_Dev\Scripts\DefinedSO\Recipe\Recipe.cs" />
+    <Compile Include="Assets\EnableSound.cs" />
     <Compile Include="Assets\_Dev\Scripts\UI\ButtonSound.cs" />
     <Compile Include="Assets\MobileDepthWater\Scripts\FPSUI.cs" />
     <Compile Include="Assets\_Dev\Scripts\UI\ItemUI.cs" />

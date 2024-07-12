@@ -15,8 +15,8 @@ public class Setting : MonoBehaviour
     {
         OnSFXVolumeChange(sfxVolume.Value);
         OnMusicVolumeChange(musicVolume.Value);
-        musicslider.value = musicVolume.Value;
-        sfxSlider.value = sfxVolume.Value;
+        if(musicslider!=null) musicslider.value = musicVolume.Value;
+        if(sfxSlider!=null) sfxSlider.value = sfxVolume.Value;
     }
     public void OnSFXVolumeChange(float value)
     {

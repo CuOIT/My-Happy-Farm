@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Make 10 sugars.
   currentProgress: 0
-  targetProgress: 3
+  targetProgress: 10
   reward: 5000
+  active: 1
   completeEvent: {fileID: 11400000, guid: 937d13c5322ba3a4baa0f8e2d8bf9a72, type: 2}
   collected: 0
   productEvent: {fileID: 11400000, guid: c9f44b6fbcbd7474b87abd9b72009f9f, type: 2}
